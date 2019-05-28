@@ -1,0 +1,35 @@
+﻿html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color:ghostwhite;
+}
+table{
+    border-collapse: collapse;
+    border:solid;
+    border-width:2px;
+    border-color:lightgray;
+    width:100%;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-color: black;
+    border-width: 1px;
+    border-bottom: solid;
+}
+td{
+    border-bottom-width:1px;
+}
+th {
+    border-color: black;
+    border-bottom-width: 2px;
+    border-left-width:1px;
+    background-color: #eed3ff;
+}
+
+.firstcol{
+    border-left-width:0px;
+}

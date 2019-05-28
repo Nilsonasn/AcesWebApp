@@ -1,0 +1,27 @@
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.dll
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
+C:\Users\Greg Secrist\Source\Repos\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb
+C:\Users\mrand\Documents\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+C:\Users\mrand\Documents\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.dll
+C:\Users\mrand\Documents\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Users\mrand\Documents\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+C:\Users\mrand\Documents\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+C:\Users\mrand\Documents\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+C:\Users\mrand\Documents\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+C:\Users\mrand\Documents\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
+C:\Users\mrand\Documents\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.dll
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
+C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb

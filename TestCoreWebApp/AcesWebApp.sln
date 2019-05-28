@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcesWebApp", "TestCoreWebApp\AcesWebApp.csproj", "{E1585CA2-B381-4CE4-820F-38A244B7C2A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{41BACFD0-114B-4D70-A13A-5AE5A99B8566}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1585CA2-B381-4CE4-820F-38A244B7C2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1585CA2-B381-4CE4-820F-38A244B7C2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1585CA2-B381-4CE4-820F-38A244B7C2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1585CA2-B381-4CE4-820F-38A244B7C2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41BACFD0-114B-4D70-A13A-5AE5A99B8566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41BACFD0-114B-4D70-A13A-5AE5A99B8566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41BACFD0-114B-4D70-A13A-5AE5A99B8566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41BACFD0-114B-4D70-A13A-5AE5A99B8566}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F80F9C34-913F-4DA4-8584-45F7CE34F9B1}
+	EndGlobalSection
+EndGlobal
