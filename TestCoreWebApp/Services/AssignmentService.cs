@@ -13,16 +13,17 @@ namespace Services
 
             Assignment tempAssignment = new Assignment() { AssignmentName = "Test Assignment",
                                                            StudentName = "Joe Biden",
-                                                           Score = 100.00,
                                                            Compiler = "G++",
                                                            Rating = 50,
                                                            NumCommits = 10,
                                                            AvgTimeCommit = 15,
                                                            StDevCommit = 2,
                                                            SourceCode = "stdout >> \"Hello World\"; "};
+            tempAssignment._Score = new Score();
+            tempAssignment._Score.NumberCorrect = 10;
+            tempAssignment._Score.NumberIncorrect = 3;
             Assignment tempAssignment2 = new Assignment(){  AssignmentName = "Test Assignment",
                                                            StudentName = "Jack Black",
-                                                           Score = 100.00,
                                                            Compiler = "G++",
                                                            Rating = 90,
                                                            NumCommits = 5,
@@ -30,9 +31,15 @@ namespace Services
                                                            StDevCommit = .5,
                                                            SourceCode = "stdout >> \"Hello World\"; "
             };
+            tempAssignment2._Score = new Score();
+            tempAssignment2._Score.NumberCorrect = 8;
+            tempAssignment2._Score.NumberIncorrect = 5;
 
             assignments.Add(tempAssignment);
             assignments.Add(tempAssignment2);
+
+            SystemInterface sysinterface = new SystemInterface();
+            sysinterface.BuildAssignment("test", "test", "test");
         }
         
 

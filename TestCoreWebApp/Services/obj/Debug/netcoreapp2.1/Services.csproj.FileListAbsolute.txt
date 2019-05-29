@@ -25,3 +25,12 @@ C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\ne
 C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
 C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
 C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.deps.json
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.dll
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb

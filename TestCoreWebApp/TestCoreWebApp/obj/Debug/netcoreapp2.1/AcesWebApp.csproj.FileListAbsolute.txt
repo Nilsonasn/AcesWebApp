@@ -68,3 +68,38 @@ C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\De
 C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.csproj.CopyComplete
 C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.dll
 C:\Users\mrand\Documents\KILL ME\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.deps.json
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.runtimeconfig.json
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.runtimeconfig.dev.json
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.dll
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.Views.dll
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\AcesWebApp.Views.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\Services.dll
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\bin\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.csprojAssemblyReference.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.RazorAssemblyInfo.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.RazorAssemblyInfo.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.AssemblyInfoInputs.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.AssemblyInfo.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.TagHelpers.input.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.TagHelpers.output.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.RazorCoreGenerate.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Assignment\AssignmentHome.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.RazorTargetAssemblyInfo.cache
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.RazorTargetAssemblyInfo.cs
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.Views.pdb
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.csproj.CopyComplete
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.dll
+C:\Users\Andrew\Documents\GitHub\AcesWebApp\TestCoreWebApp\TestCoreWebApp\obj\Debug\netcoreapp2.1\AcesWebApp.pdb
