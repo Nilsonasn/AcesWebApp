@@ -516,11 +516,22 @@
         }
       },
       "Services/1.0.0": {
+        "dependencies": {
+          "Octokit": "0.32.0.0"
+        },
         "runtime": {
           "Services.dll": {}
         },
         "compile": {
           "Services.dll": {}
+        }
+      },
+      "Octokit.Reference/0.32.0.0": {
+        "runtime": {
+          "Octokit.dll": {
+            "assemblyVersion": "0.32.0.0",
+            "fileVersion": "0.32.0.0"
+          }
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3655,6 +3666,11 @@
     },
     "Services/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Octokit.Reference/0.32.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
