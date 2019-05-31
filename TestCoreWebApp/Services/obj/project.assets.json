@@ -688,23 +688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rhet\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\Rhet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\AcesWebApp\\TestCoreWebApp\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Rhet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
