@@ -43,3 +43,9 @@ C:\Users\User\Desktop\web app\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netco
 C:\Users\User\Desktop\web app\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
 C:\Users\User\Desktop\web app\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
 C:\Users\User\Desktop\web app\AcesWebApp\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb
+C:\Users\Rhet\Source\Repos\AcesWebApp3\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csprojAssemblyReference.cache
+C:\Users\Rhet\Source\Repos\AcesWebApp3\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.csproj.CoreCompileInputs.cache
+C:\Users\Rhet\Source\Repos\AcesWebApp3\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfoInputs.cache
+C:\Users\Rhet\Source\Repos\AcesWebApp3\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.AssemblyInfo.cs
+C:\Users\Rhet\Source\Repos\AcesWebApp3\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.dll
+C:\Users\Rhet\Source\Repos\AcesWebApp3\TestCoreWebApp\Services\obj\Debug\netcoreapp2.1\Services.pdb

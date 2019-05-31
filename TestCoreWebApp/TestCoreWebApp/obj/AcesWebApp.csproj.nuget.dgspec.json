@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj": {}
+    "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj": {
+    "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\Andrew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\Services\\obj\\",
+        "projectPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\Rhet\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Andrew\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rhet\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,20 +56,20 @@
         }
       }
     },
-    "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj": {
+    "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj",
         "projectName": "AcesWebApp",
-        "projectPath": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj",
-        "packagesPath": "C:\\Users\\Andrew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\TestCoreWebApp\\obj\\",
+        "projectPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\TestCoreWebApp\\AcesWebApp.csproj",
+        "packagesPath": "C:\\Users\\Rhet\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\TestCoreWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Andrew\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rhet\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,8 +82,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\Andrew\\Documents\\GitHub\\AcesWebApp\\TestCoreWebApp\\Services\\Services.csproj"
+              "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp3\\TestCoreWebApp\\Services\\Services.csproj"
               }
             }
           }
