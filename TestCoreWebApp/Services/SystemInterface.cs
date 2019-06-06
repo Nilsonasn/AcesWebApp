@@ -32,15 +32,15 @@ namespace Services
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
                 //cmd.StartInfo.UseShellExecute = false;
-                //cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
                 //cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
                 cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
-                cmd.StandardInput.WriteLine("g++ -g Test/Test.cpp -o TestExe -lm");
-                cmd.StandardInput.WriteLine("TestExe");
+                //cmd.StandardInput.WriteLine("g++ -g Test/Test.cpp -o TestExe -lm");
+                //cmd.StandardInput.WriteLine("TestExe");
 
-                //Set up the cmd prompt to run the VS tools
+                /*//Set up the cmd prompt to run the VS tools
                 string batDirectory = "";
                 //MODIFY THIS TO SUPPORT DIFFERENT VERSIONS OF VISUAL STUDIO
                 //Only 2017 is supported
@@ -58,7 +58,7 @@ namespace Services
                 }
                 else
                 {
-                    throw new Exception("Compiler not supported");
+                    //throw new Exception("Compiler not supported");
                 }
 
                 //This runs a special cmd prompt that allows us to build using the VS compiler
@@ -84,7 +84,7 @@ namespace Services
 
                 //Run the project
                 string runCmd = "UnitTests_InstructorVersion.exe";
-                cmd.StandardInput.WriteLine(runCmd);
+                cmd.StandardInput.WriteLine(runCmd);*/
 
                 cmd.StandardInput.WriteLine("exit");
 
@@ -129,8 +129,8 @@ namespace Services
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "."
-                    + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+    //            throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "."
+    //                + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
             return tempScore;
         }//build assignment
