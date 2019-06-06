@@ -32,13 +32,31 @@ namespace Services
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
                 //cmd.StartInfo.UseShellExecute = false;
-                cmd.StartInfo.RedirectStandardOutput = true;
+                //cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
                 //cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
                 cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
-                //cmd.StandardInput.WriteLine("g++ -g Test/Test.cpp -o TestExe -lm");
-                //cmd.StandardInput.WriteLine("TestExe");
+                cmd.StandardInput.WriteLine("g++ --version");
+
+
+                //cmd.StandardInput.WriteLine("g++ -g {0} -o TestExe -lm", studentProjLocation);
+                //cmd.StandardInput.WriteLine("g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\Test.cpp -o TestExe -lm");
+                //"g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\stacksandqueues.cpp " +
+                cmd.StandardInput.WriteLine("g++ -c C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\StacksAndQueues.cpp");
+
+
+                                              //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.cpp " +
+                                              //"-o MainExe -lm");
+                                             //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.cpp -o MainExe -lm");
+
+                /*cmd.StandardInput.WriteLine("g++ -o main.exe" +
+                                            " C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\StacksAndQueues.o " +
+                                            //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\StacksAndQueues.o " +
+                                            "C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.o");*/
+
+
+                cmd.StandardInput.WriteLine("MainExe");
 
                 /*//Set up the cmd prompt to run the VS tools
                 string batDirectory = "";

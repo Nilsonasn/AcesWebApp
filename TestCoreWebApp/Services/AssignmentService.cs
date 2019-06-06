@@ -11,6 +11,13 @@ namespace Services
         {
             assignments = new List<Assignment>();
 
+            ClassRoom classRoom = new ClassRoom("Test", "C:\\Users\\rhett\\Desktop\\teststuff\\classroom_roster(1).csv", "Test");
+
+            Analyzer Analyze = new Analyzer();
+
+            Analyze.run(classRoom, "Test-Assignment", "C:\\Users\rhett\\Desktop\\teststuff\\WebACESTest", "CS4450-Final-Group-Summer2019:PassW0rd4450",
+                        "C:\\Users\\rhett\\Desktop\\teststuff\\UnitTests_InstructorVersion.cpp", "23456");
+
             Assignment tempAssignment = new Assignment() { AssignmentName = "Test Assignment",
                                                            StudentName = "Joe Biden",
                                                            Compiler = "G++",
@@ -22,7 +29,7 @@ namespace Services
             tempAssignment._Score = new Score();
             tempAssignment._Score.NumberCorrect = 10;
             tempAssignment._Score.NumberIncorrect = 3;
-            Assignment tempAssignment2 = new Assignment(){  AssignmentName = "Test Assignment",
+            /*Assignment tempAssignment2 = new Assignment(){  AssignmentName = "Test Assignment",
                                                            StudentName = "Jack Black",
                                                            Compiler = "G++",
                                                            Rating = 90,
@@ -33,10 +40,10 @@ namespace Services
             };
             tempAssignment2._Score = new Score();
             tempAssignment2._Score.NumberCorrect = 8;
-            tempAssignment2._Score.NumberIncorrect = 5;
+            tempAssignment2._Score.NumberIncorrect = 5;*/
 
             assignments.Add(tempAssignment);
-            assignments.Add(tempAssignment2);
+            //assignments.Add(tempAssignment2);
 
             SystemInterface sysinterface = new SystemInterface();
             sysinterface.BuildAssignment("test", "test", "test");
