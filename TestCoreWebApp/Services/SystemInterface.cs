@@ -31,15 +31,15 @@ namespace Services
                 //A process is used to run commands on the command line
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
-                //cmd.StartInfo.UseShellExecute = false;
-                //cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
-                //cmd.StartInfo.RedirectStandardError = true;
+                cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
                 cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
                 cmd.StandardInput.WriteLine("g++ -g Test/Test.cpp -o TestExe -lm");
                 cmd.StandardInput.WriteLine("TestExe");
-
+                /*
                 //Set up the cmd prompt to run the VS tools
                 string batDirectory = "";
                 //MODIFY THIS TO SUPPORT DIFFERENT VERSIONS OF VISUAL STUDIO
@@ -65,6 +65,7 @@ namespace Services
                 cmd.StandardInput.WriteLine(batDirectory);
                 string runBat = "vcvars32.bat";
                 cmd.StandardInput.WriteLine(runBat);
+                */
 
                 //move to the directory
                 string directoryMove = "cd \"" + studentProjLocation + "\"";

@@ -12,9 +12,10 @@ namespace Services
 
         public AssignmentService()
         {
-            /* assignments = new List<Assignment>();
+             assignments = new List<Assignment>();
 
-             Assignment tempAssignment = new Assignment() { AssignmentName = "Test Assignment",
+            
+            /* Assignment tempAssignment = new Assignment() { AssignmentName = "Test Assignment",
                                                             StudentName = "Joe Biden",
                                                             Compiler = "G++",
                                                             Rating = 50,
@@ -39,22 +40,40 @@ namespace Services
              tempAssignment2._Score.NumberIncorrect = 5;
 
              assignments.Add(tempAssignment);
-             assignments.Add(tempAssignment2);
+             assignments.Add(tempAssignment2);*/
 
              SystemInterface sysinterface = new SystemInterface();
-             sysinterface.BuildAssignment("test", "test", "test");*/
+             sysinterface.BuildAssignment("test", "test", "test");
 
             //Analyze = new Analyzer();
 
             UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
             //roster location hardcoded to Alex's Machine
-            ClassRoom classroom = new ClassRoom("weberstate4450summer2019", "C:\\Users\\User\\Desktop\\classroom_roster.csv", "4450FinalClassroom");
+            ClassRoom classroom = new ClassRoom("weberstate4450summer2019", "C:\\Users\\User\\Desktop\\classroom_roster1.csv", "4450FinalClassroom");
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
 
             //hardcoded to Alex's PC
             Analyze.run(classroom, "test-assignment", "C:\\Users\\User\\Desktop\\studentRepo",
                             useKey, "C:\\Users\\User\\Desktop\\UnitTests_InstructorVersion.cpp", "23456");
+
+            foreach (Student s in classroom.Students)
+            {
+                Assignment assignment = new Assignment()
+                {
+                    AssignmentName = "test-assignment",
+                    StudentName = s.Name,
+                    Compiler = s.Compiler,
+                    Rating = s.Rating,
+                    Score = s.StudentScore.ToString(),
+                    NumCommits = s.NumStudentCommits,
+                    AvgTimeCommit = s.AvgTimeBetweenCommits,
+                    StDevCommit = s.StdDev,
+                    SourceCode = "stdout >> \"Hello World\"; "
+                };
+
+                assignments.Add(assignment);
+            }
 
         }
         
