@@ -28,61 +28,17 @@ namespace Services
                 tempScore.NumberCorrect = 0;
                 tempScore.NumberIncorrect = 0;
 
+                //Compiler Location
+                String compLocation = Path.GetFullPath("..\\G++\\bin\\");
+
                 //A process is used to run commands on the command line
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
-                //cmd.StartInfo.UseShellExecute = false;
-                //cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
-                //cmd.StartInfo.RedirectStandardError = true;
+                cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
-                //C: \Users\Rhet\Source\Repos\AcesWebApp5\TestCoreWebApp\G++\bin
-                cmd.StandardInput.WriteLine("cd ..\\G++\\bin");
-                // cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");               
-
-
-                //cmd.StandardInput.WriteLine("g++ -g {0} -o TestExe -lm", studentProjLocation);
-                //cmd.StandardInput.WriteLine("g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\Test.cpp -o TestExe -lm");
-                //"g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\stacksandqueues.cpp " +
-                
-                cmd.StandardInput.WriteLine("g++ C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp5\\TestCoreWebApp\\ACESTestClassroom\\TestClassroom\\thecanadian0504@gmail.com\\*.cpp " +
-                                              //"C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp5\\TestCoreWebApp\\ACESTestClassroom\\TestClassroom\\thecanadian0504@gmail.com\\UnitTests_InstructorVersion.cpp " +
-                                              "-o MainExe -lm");
-                                             //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.cpp -o MainExe -lm");
-
-                /*cmd.StandardInput.WriteLine("g++ -o main.exe" +
-                                            " C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\StacksAndQueues.o " +
-                                            //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\StacksAndQueues.o " +
-                                            "C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.o");*/
-
-
-                cmd.StandardInput.WriteLine("MainExe");
-
-                /*//Set up the cmd prompt to run the VS tools
-                string batDirectory = "";
-                //MODIFY THIS TO SUPPORT DIFFERENT VERSIONS OF VISUAL STUDIO
-                //Only 2017 is supported
-                if (Directory.Exists("C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Auxiliary\\Build"))
-                {
-                    batDirectory = "cd \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Auxiliary\\Build\"";
-                }
-                else if (Directory.Exists("C:\\Program Files (x86)\\Microsoft Visual Studio\\2015\\Enterprise\\VC\\Auxiliary\\Build"))
-                {
-                    batDirectory = "cd \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2015\\Enterprise\\VC\\Auxiliary\\Build\"";
-                }
-                else if (Directory.Exists("C:\\Program Files (x86)\\Microsoft Visual Studio\\2013\\Enterprise\\VC\\Auxiliary\\Build"))
-                {
-                    batDirectory = "cd \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2013\\Enterprise\\VC\\Auxiliary\\Build\"";
-                }
-                else
-                {
-                    //throw new Exception("Compiler not supported");
-                }
-
-                //This runs a special cmd prompt that allows us to build using the VS compiler
-                cmd.StandardInput.WriteLine(batDirectory);
-                string runBat = "vcvars32.bat";
-                cmd.StandardInput.WriteLine(runBat);
 
                 //move to the directory
                 string directoryMove = "cd \"" + studentProjLocation + "\"";
@@ -96,13 +52,16 @@ namespace Services
                 string moveCmd = "copy \"" + instructorUnitTests + "\" \"" + studentProjLocation + "\" /Y";
                 cmd.StandardInput.WriteLine(moveCmd);
 
+                //Move to compiler location
+                cmd.StandardInput.WriteLine("cd " + compLocation);
+
                 //Build the project
-                string buildCmd = "cl /EHsc UnitTests_InstructorVersion.cpp";
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + "\\", studentProjLocation + "\\");
                 cmd.StandardInput.WriteLine(buildCmd);
 
                 //Run the project
-                string runCmd = "UnitTests_InstructorVersion.exe";
-                cmd.StandardInput.WriteLine(runCmd);*/
+                string runCmd = String.Format("{0}\\UnitTests_InstructorVersion", studentProjLocation);
+                cmd.StandardInput.WriteLine(runCmd);
 
                 cmd.StandardInput.WriteLine("exit");
 
@@ -147,8 +106,8 @@ namespace Services
             }
             catch (Exception ex)
             {
-    //            throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "."
-    //                + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "."
+                    + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
             return tempScore;
         }//build assignment

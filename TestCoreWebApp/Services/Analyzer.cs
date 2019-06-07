@@ -54,7 +54,7 @@ namespace Services
             {
                 hasRun = true;
                 //get the class list, and load it up
-                //CurrentClass.CloneStudentRepositorys(assignmentName, targetFolder, userkey);
+                CurrentClass.CloneStudentRepositorys(assignmentName, targetFolder, userkey);
 
                 foreach (Student student in CurrentClass.Students)
                 {
