@@ -32,9 +32,9 @@ namespace Services
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
                 //cmd.StartInfo.UseShellExecute = false;
-                cmd.StartInfo.RedirectStandardOutput = true;
+                //cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
-                cmd.StartInfo.RedirectStandardError = true;
+                //cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
                 //C: \Users\Rhet\Source\Repos\AcesWebApp5\TestCoreWebApp\G++\bin
                 cmd.StandardInput.WriteLine("cd ..\\G++\\bin");
