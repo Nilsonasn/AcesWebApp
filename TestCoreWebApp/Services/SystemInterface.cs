@@ -36,14 +36,17 @@ namespace Services
                 cmd.StartInfo.RedirectStandardInput = true;
                 //cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
-                cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
+                //C: \Users\Rhet\Source\Repos\AcesWebApp5\TestCoreWebApp\G++\bin
+                cmd.StandardInput.WriteLine("cd ..\\G++\\bin");
+                // cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
                 cmd.StandardInput.WriteLine("g++ --version");
 
 
                 //cmd.StandardInput.WriteLine("g++ -g {0} -o TestExe -lm", studentProjLocation);
                 //cmd.StandardInput.WriteLine("g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\Test.cpp -o TestExe -lm");
                 //"g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\stacksandqueues.cpp " +
-                cmd.StandardInput.WriteLine("g++ -c C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\StacksAndQueues.cpp");
+                
+                cmd.StandardInput.WriteLine("g++ -c C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp5\\TestCoreWebApp\\ACESTestClassroom\\TestClassroom\\thecanadian0504@gmail.com\\StacksAndQueues.cpp");
 
 
                                               //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.cpp " +

@@ -11,12 +11,12 @@ namespace Services
         {
             assignments = new List<Assignment>();
 
-            ClassRoom classRoom = new ClassRoom("Test", "C:\\Users\\rhett\\Desktop\\teststuff\\classroom_roster(1).csv", "Test");
+            ClassRoom classRoom = new ClassRoom("Test", "..\\ACESTestClassroom\\classroom_roster.csv", "Test");
 
             Analyzer Analyze = new Analyzer();
 
-            Analyze.run(classRoom, "Test-Assignment", "C:\\Users\rhett\\Desktop\\teststuff\\WebACESTest", "CS4450-Final-Group-Summer2019:PassW0rd4450",
-                        "C:\\Users\\rhett\\Desktop\\teststuff\\UnitTests_InstructorVersion.cpp", "23456");
+            Analyze.run(classRoom, "Test-Assignment", "..\\ACESClassroom\\TestClassroom", "CS4450-Final-Group-Summer2019:PassW0rd4450",
+                        "..\\ACESClassroom\\UnitTests_InstructorVersion.cpp", "23456");
 
             Assignment tempAssignment = new Assignment() { AssignmentName = "Test Assignment",
                                                            StudentName = "Joe Biden",
