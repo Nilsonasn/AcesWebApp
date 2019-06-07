@@ -15,6 +15,11 @@ namespace Services
         public String Name { get; private set; }
 
         /// <summary>
+        /// Students github email
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
         /// Private backer for Rating
         /// </summary>
         private string rating;
@@ -130,7 +135,7 @@ namespace Services
         /// </summary>
         /// <param name="name">Student Name</param>
         /// <param name="userName">Student Username</param>
-        public Student(string name, string userName)
+        public Student(string name, string userName, string email)
         {
             Name = name;
             rating = "Green";
@@ -146,6 +151,7 @@ namespace Services
             Min = 0;
             Max = 0;
             Compiler = "";
+            Email = email;
         }
 
         /// <summary>

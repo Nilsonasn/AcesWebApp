@@ -75,7 +75,7 @@ namespace Services
             try
             {
                 StreamReader sr = new StreamReader(RosterLocation);
-                // read the fiirst linw which is just a key. 
+                // read the first line which is just a key. 
                 string input = sr.ReadLine();
                 // read the first data line. 
                 input = sr.ReadLine();
@@ -89,7 +89,14 @@ namespace Services
                     if (line[1].Trim('"') != "")
                     {
                         // get the student username and id set by the teacher. 
-                        Students.Add(new Student(line[0].Trim('"'), line[1].Trim('"')));
+                        if (line[3].Trim('"') == "")
+                        {
+                            Students.Add(new Student(line[0].Trim('"'), line[1].Trim('"'), line[0].Trim('"')));
+                        }
+                        else
+                        {
+                            Students.Add(new Student(line[3].Trim('"'), line[1].Trim('"'), line[0].Trim('"')));
+                        }
                     }
                     //Read the next line
                     input = sr.ReadLine();
