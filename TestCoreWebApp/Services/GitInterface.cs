@@ -49,13 +49,13 @@ namespace Services
 
                     // create git clone command 
                     string gitClone = "git clone https://" + userkey + "@github.com/" + nameOfOrganization + "/"
-                        + assignmentName + "-" + current.GitHubUserName + ".git " + targetFolder + "\\" + current.Name;
+                        + assignmentName + "-" + current.GitHubUserName + ".git " + targetFolder + "\\" + current.Email;
 
                     //execute git clone command 
                     cmd.StandardInput.WriteLine(gitClone);
 
                     //have command window go to repo folder for student 
-                    cmd.StandardInput.WriteLine("cd " + targetFolder + "\\" + current.Name);
+                    cmd.StandardInput.WriteLine("cd " + targetFolder + "\\" + current.Email);
 
                     //run get log command with flag to show changes 
                     cmd.StandardInput.WriteLine("git log --shortstat");
