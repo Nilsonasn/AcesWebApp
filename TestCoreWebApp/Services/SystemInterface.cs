@@ -32,25 +32,22 @@ namespace Services
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
                 //cmd.StartInfo.UseShellExecute = false;
-                //cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
-                //cmd.StartInfo.RedirectStandardError = true;
+                cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
                 //C: \Users\Rhet\Source\Repos\AcesWebApp5\TestCoreWebApp\G++\bin
                 cmd.StandardInput.WriteLine("cd ..\\G++\\bin");
-                // cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
-                cmd.StandardInput.WriteLine("g++ --version");
+                // cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");               
 
 
                 //cmd.StandardInput.WriteLine("g++ -g {0} -o TestExe -lm", studentProjLocation);
                 //cmd.StandardInput.WriteLine("g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\Test.cpp -o TestExe -lm");
                 //"g++ -g C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\stacksandqueues.cpp " +
                 
-                cmd.StandardInput.WriteLine("g++ -c C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp5\\TestCoreWebApp\\ACESTestClassroom\\TestClassroom\\thecanadian0504@gmail.com\\StacksAndQueues.cpp");
-
-
-                                              //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.cpp " +
-                                              //"-o MainExe -lm");
+                cmd.StandardInput.WriteLine("g++ C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp5\\TestCoreWebApp\\ACESTestClassroom\\TestClassroom\\thecanadian0504@gmail.com\\*.cpp " +
+                                              //"C:\\Users\\Rhet\\Source\\Repos\\AcesWebApp5\\TestCoreWebApp\\ACESTestClassroom\\TestClassroom\\thecanadian0504@gmail.com\\UnitTests_InstructorVersion.cpp " +
+                                              "-o MainExe -lm");
                                              //"C:\\Users\\rhett\\Desktop\\teststuff\\WebACESTest\\pcgamer2085@gmail.com\\UnitTests_InstructorVersion.cpp -o MainExe -lm");
 
                 /*cmd.StandardInput.WriteLine("g++ -o main.exe" +
