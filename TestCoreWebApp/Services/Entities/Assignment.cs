@@ -8,8 +8,8 @@ namespace Services.Entities
     {
         public string AssignmentName{ get; set; }
         public string StudentName { get; set; }
-        public double Rating { get; set; }
-        public Score _Score { get; set; }
+        public string Rating { get; set; }
+        public string Score { get; set; }
         public string Compiler { get; set; }
         public int NumCommits { get; set; }
         public double AvgTimeCommit { get; set; }
