@@ -1,4 +1,8 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿function GETOauthGithub() {
+    window.alert("Alright chums lets do this.");
+    $.get({
+        url:"https://github.com/login/oauth/authorize",
+        client_id:"b8adc9fb66220497bc65",
+        redirect_uri:"https://localhost:44317/Assignments"
+    });
+}
