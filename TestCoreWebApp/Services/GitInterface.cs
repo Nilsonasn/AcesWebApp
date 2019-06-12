@@ -31,7 +31,7 @@ namespace Services
                     bool repoFound = true;
 
                     // set student repo location
-                    current.ProjectLocation = targetFolder + "\\" + current.Name;
+                    current.ProjectLocation = targetFolder + "\\" + current.Email;
 
                     // start command process to run git
                     Process cmd = new Process();
