@@ -28,43 +28,17 @@ namespace Services
                 tempScore.NumberCorrect = 0;
                 tempScore.NumberIncorrect = 0;
 
+                //Compiler Location
+                String compLocation = Path.GetFullPath("..\\G++\\bin\\");
+
                 //A process is used to run commands on the command line
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
-                //cmd.StartInfo.UseShellExecute = false;
-                //cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
-                //cmd.StartInfo.RedirectStandardError = true;
+                cmd.StartInfo.RedirectStandardError = true;
                 cmd.Start();
-                cmd.StandardInput.WriteLine("cd ..\\G++\\cygwin-b20\\H-i586-cygwin32\\bin");
-                cmd.StandardInput.WriteLine("g++ -g Test/Test.cpp -o TestExe -lm");
-                cmd.StandardInput.WriteLine("TestExe");
-
-                //Set up the cmd prompt to run the VS tools
-                string batDirectory = "";
-                //MODIFY THIS TO SUPPORT DIFFERENT VERSIONS OF VISUAL STUDIO
-                //Only 2017 is supported
-                if (Directory.Exists("C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Auxiliary\\Build"))
-                {
-                    batDirectory = "cd \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Auxiliary\\Build\"";
-                }
-                else if (Directory.Exists("C:\\Program Files (x86)\\Microsoft Visual Studio\\2015\\Enterprise\\VC\\Auxiliary\\Build"))
-                {
-                    batDirectory = "cd \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2015\\Enterprise\\VC\\Auxiliary\\Build\"";
-                }
-                else if (Directory.Exists("C:\\Program Files (x86)\\Microsoft Visual Studio\\2013\\Enterprise\\VC\\Auxiliary\\Build"))
-                {
-                    batDirectory = "cd \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2013\\Enterprise\\VC\\Auxiliary\\Build\"";
-                }
-                else
-                {
-                    throw new Exception("Compiler not supported");
-                }
-
-                //This runs a special cmd prompt that allows us to build using the VS compiler
-                cmd.StandardInput.WriteLine(batDirectory);
-                string runBat = "vcvars32.bat";
-                cmd.StandardInput.WriteLine(runBat);
 
                 //move to the directory
                 string directoryMove = "cd \"" + studentProjLocation + "\"";
@@ -78,12 +52,29 @@ namespace Services
                 string moveCmd = "copy \"" + instructorUnitTests + "\" \"" + studentProjLocation + "\" /Y";
                 cmd.StandardInput.WriteLine(moveCmd);
 
+                //Move to compiler location
+                cmd.StandardInput.WriteLine("cd " + compLocation);
+
                 //Build the project
-                string buildCmd = "cl /EHsc UnitTests_InstructorVersion.cpp";
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + "\\", studentProjLocation + "\\");
                 cmd.StandardInput.WriteLine(buildCmd);
+                
+                 //Waits for the compiler to compile the program before continuing
+                int timeOut = 0;
+                while (!(File.Exists(String.Format("{0}\\UnitTests_InstructorVersion.exe", studentProjLocation))))
+                {
+                    Thread.Sleep(1000);
+                    timeOut++;
+
+                    //timesout if 20 seconds have past
+                    if(timeOut == 20)
+                    {
+                        break;
+                    }
+                }
 
                 //Run the project
-                string runCmd = "UnitTests_InstructorVersion.exe";
+                string runCmd = String.Format("{0}\\UnitTests_InstructorVersion", studentProjLocation);
                 cmd.StandardInput.WriteLine(runCmd);
 
                 cmd.StandardInput.WriteLine("exit");

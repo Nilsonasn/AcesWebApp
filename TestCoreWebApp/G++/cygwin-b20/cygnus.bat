@@ -1,4 +1,0 @@
-@ECHO OFF
-SET MAKE_MODE=UNIX
-SET PATH=c:\users\andrew\DOCUME~1\github\ACESWE~1\TESTCO~1\G__~1\CYGWIN~1\H-I586~1\bin;%PATH%
-bash
