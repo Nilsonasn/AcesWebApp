@@ -29,7 +29,7 @@ namespace Services
                 tempScore.NumberIncorrect = 0;
 
                 //Compiler Location
-                String compLocation = Path.GetFullPath("..\\G++\\bin\\");
+                String compLocation = Path.GetFullPath(@"..\G++\bin\");
 
                 //A process is used to run commands on the command line
                 Process cmd = new Process();
@@ -56,25 +56,25 @@ namespace Services
                 cmd.StandardInput.WriteLine("cd " + compLocation);
 
                 //Build the project
-                string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + "\\", studentProjLocation + "\\");
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
                 cmd.StandardInput.WriteLine(buildCmd);
                 
                  //Waits for the compiler to compile the program before continuing
                 int timeOut = 0;
-                while (!(File.Exists(String.Format("{0}\\UnitTests_InstructorVersion.exe", studentProjLocation))))
+                while (!(File.Exists(String.Format(@"{0}\UnitTests_InstructorVersion.exe", studentProjLocation))))
                 {
                     Thread.Sleep(1000);
                     timeOut++;
 
-                    //timesout if 20 seconds have past
-                    if(timeOut == 20)
+                    //timesout if 5 seconds have past
+                    if(timeOut == 5)
                     {
                         break;
                     }
                 }
 
                 //Run the project
-                string runCmd = String.Format("{0}\\UnitTests_InstructorVersion", studentProjLocation);
+                string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
                 cmd.StandardInput.WriteLine(runCmd);
 
                 cmd.StandardInput.WriteLine("exit");
