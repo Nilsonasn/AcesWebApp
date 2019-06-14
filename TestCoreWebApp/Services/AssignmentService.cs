@@ -18,13 +18,14 @@ namespace Services
 
             UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
             //roster location hardcoded to Alex's Machine
-            ClassRoom classroom = new ClassRoom("weberstate4450summer2019", "C:\\Users\\Rhet\\Desktop\\classroom_roster.csv", "4450FinalClassroom");
+            ClassRoom classroom = new ClassRoom("weberstate4450summer2019", @"..\Services\TestingResources\classroom_roster.csv", "4450FinalClassroom");
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
 
-            //hardcoded to Alex's PC
-            Analyze.run(classroom, "test-assignment", "C:\\Users\\Rhet\\Desktop\\CLassroom",
-                            useKey, "C:\\Users\\Rhet\\Desktop\\UnitTests_InstructorVersion.cpp", "23456");
+            //hardcoded to Alex's PCC:
+            Analyze.run(classroom, "test-assignment", @"C:\Users\Rhet\Source\Repos\AcesWebApp\TestCoreWebApp\Services\TestingResources\ClassRepo",
+               
+                            useKey, @"..\Services\TestingResources\UnitTests_InstructorVersion.cpp", "23456");
 
             foreach (Student s in classroom.Students)
             {

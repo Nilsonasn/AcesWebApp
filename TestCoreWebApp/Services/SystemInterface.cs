@@ -29,7 +29,7 @@ namespace Services
                 tempScore.NumberIncorrect = 0;
 
                 //Compiler Location
-                String compLocation = Path.GetFullPath("..\\G++\\bin\\");
+                String compLocation = Path.GetFullPath(@"..\G++\bin\");
 
                 //A process is used to run commands on the command line
                 Process cmd = new Process();
