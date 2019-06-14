@@ -1,6 +1,7 @@
 ﻿using Services.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Services
 {
@@ -12,20 +13,26 @@ namespace Services
 
         public AssignmentService()
         {
-             assignments = new List<Assignment>();          
-            
-           
+             assignments = new List<Assignment>();
+
+            String here = Directory.GetCurrentDirectory();
+
+            //roster Location
+            String rosterLocation = Path.GetFullPath(@"..\Services\TestingResources\classroom_roster.csv");
+            //repo location
+            String repoLocation = Path.GetFullPath(@"..\Services\TestingResources\ClassRepo");
+            //instructor unit test UnitLocation
+            String instUnitLocation = Path.GetFullPath(@"..\Services\TestingResources\UnitTests_InstructorVersion.cpp");
 
             UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
-            //roster location hardcoded to Alex's Machine
-            ClassRoom classroom = new ClassRoom("weberstate4450summer2019", @"..\Services\TestingResources\classroom_roster.csv", "4450FinalClassroom");
+            
+            ClassRoom classroom = new ClassRoom("weberstate4450summer2019", rosterLocation, "4450FinalClassroom");
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
-
-            //hardcoded to Alex's PCC:
-            Analyze.run(classroom, "test-assignment", @"C:\Users\Rhet\Source\Repos\AcesWebApp\TestCoreWebApp\Services\TestingResources\ClassRepo",
+            
+            Analyze.run(classroom, "test-assignment", repoLocation,
                
-                            useKey, @"..\Services\TestingResources\UnitTests_InstructorVersion.cpp", "23456");
+                            useKey, instUnitLocation, "23456");
 
             foreach (Student s in classroom.Students)
             {

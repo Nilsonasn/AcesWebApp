@@ -1,10 +1,7 @@
 //#include "Catch2.h"
 #include "StacksAndQueues.h"
 
-using std::cout;
-using std::cerr;
-using std::endl;
-using std::string;
+using namespace std;
 
 std::string securityCode = "23456";
 
