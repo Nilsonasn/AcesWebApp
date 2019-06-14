@@ -14,6 +14,8 @@
 #include <conio.h>
 #endif
 
+using namespace std;
+
 //These two base classes help the assignment compile and run without any changes.  
 //Dot not modify these.  You will instead override the methods in the derived classes below.
 template <typename T>
