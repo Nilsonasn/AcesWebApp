@@ -446,3 +446,69 @@ namespace Services
     }
 }
 */
+/*
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Reflection;
+
+namespace Services
+{
+    public class ProfScreenService
+    {
+        /// <summary>
+        /// Gets the classes saved by the user in the .csv file
+        /// </summary>
+        private void GetClassList()
+        {
+            try
+            {
+                ObservableCollection<ClassRoom> classList = new ObservableCollection<ClassRoom>();
+
+                // create a default path that is only used in the program. 
+                string path = "classlist.csv";
+
+                if (File.Exists(path))
+                {
+                    // Create a file to write to.
+                    using (StreamReader sr = File.OpenText(path))
+                    {
+                        string currentLine = "";
+                        while ((currentLine = sr.ReadLine()) != null && currentLine != "")
+                        {
+                            string[] items = currentLine.Split(',');
+                            classList.Add(new ClassRoom(items[0], items[1], items[2]));
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Handle the error.
+        /// </summary>
+        /// <param name="sClass">The class in which the error occurred in.</param>
+        /// <param name="sMethod">The method in which the error occurred in.</param>
+        private void HandleError(string sClass, string sMethod, string sMessage)
+        {
+            try
+            {
+                //Would write to a file or database here.
+                MessageBox.Show(sClass + "." + sMethod + " -> " + sMessage);
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine +
+                                             "HandleError Exception: " + ex.Message);
+            }
+        }
+    }
+}
+*/

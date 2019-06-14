@@ -1,6 +1,10 @@
 ﻿
+@model AcesWebApp.Models.ProfScreenModel
+
 @{
     Layout = null;
+
+
 }
 
 <!DOCTYPE html>
@@ -12,5 +16,29 @@
 </head>
 <body>
     <h1>Prof Screen</h1>
+
+    <a href="">GitHub Login</a>
+
+    Class: <select>
+        <option value="class1">class1</option>
+        <option value="class2">class2</option>
+    </select>
+
+    <form asp-controller="ProfSceenController" asp-action="GetClassList">
+        <select asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
+    </form>
+
+    Assignment Name: <input type="text" name="assignmentTextbox" value="">
+
+    Unit Test File: <input type="text" name="unitTestFileTextbox" value="">
+    <a href="">Browse</a>
+
+    Student Repo Location: <input type="text" name="studentRepoLocationTextbox" value="">
+    <a href="">Browse</a>
+
+    Security Key: <input type="text" name="securityKeyTextbox" value="">
+
+    <a href="">Delete Class</a> <a href="">Create Class</a> <a href="">Check</a>
+
 </body>
 </html>
