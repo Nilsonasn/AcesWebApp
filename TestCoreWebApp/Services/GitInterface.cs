@@ -48,8 +48,11 @@ namespace Services
                     }
 
                     // create git clone command 
+                    //string gitClone = "git clone https://" + userkey + "@github.com/" + nameOfOrganization + "/"
+                    //   + assignmentName + "-" + current.GitHubUserName + ".git " + targetFolder + "\\" + current.Email;
+
                     string gitClone = "git clone https://" + userkey + "@github.com/" + nameOfOrganization + "/"
-                        + assignmentName + "-" + current.GitHubUserName + ".git " + targetFolder + "\\" + current.Email;
+                        + assignmentName + "-" + current.GitHubUserName + ".git " + "\"" + targetFolder + "\\" + current.Email + "\"";
 
                     //execute git clone command 
                     cmd.StandardInput.WriteLine(gitClone);
