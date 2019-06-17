@@ -11,6 +11,11 @@ namespace AcesWebApp.Models
         public List<Services.ClassRoom> classList { get; set; }
         public string className { get; set; }
 
+        public string assignmentName { get; set; }
+        public string unitTestFileLocation { get; set; }
+        public string studentRepoLocation { get; set; }
+        public string securityKey { get; set; }
+
         public ProfScreenModel()
         {
             classList = new List<Services.ClassRoom>();
