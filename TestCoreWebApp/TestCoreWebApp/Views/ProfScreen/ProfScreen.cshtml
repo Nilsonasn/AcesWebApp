@@ -17,9 +17,9 @@
     <h1>Prof Screen</h1>
 
     <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
-        <form asp-controller="ProfSceenController" asp-action="GetClassList">
-            <select asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
-        </form>
+        <!--<form asp-controller="ProfSceenController" asp-action="GetClassList">-->
+            <select style="width:100%" asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
+        <!--</form>-->
 
         
         @Html.TextBoxFor(model => model.assignmentName, new { style="width:100%", @placeholder = "Assignment Name" })
@@ -30,7 +30,7 @@
         <br>
         @Html.TextBoxFor(model => model.securityKey, new { style = "width:100%", @placeholder = "Security Key" })
         <br>
-        <a href="">Delete Class</a> <a href="">Create Class</a> <a href="">Check</a>
+        <a href="" style="margin-right:15%">Delete Class</a> <a href="" style="margin-right:20%">Create Class</a> <a href="" style="margin-right:2%">Check</a>
     </div>
 
 </body>

@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;//
+using Microsoft.AspNetCore.Mvc;
 
 using System.IO;
 using System.Collections.ObjectModel;
 using AcesWebApp.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;//
 
 namespace AcesWebApp.Controllers
 {
     public class ProfScreenController : Controller
     {
         ObservableCollection<Services.ClassRoom> classList = new ObservableCollection<Services.ClassRoom>();
+        List<Services.ClassRoom> classList2 = new List<Services.ClassRoom>();
 
         [Route("ProfScreen")]
         public IActionResult ProfScreen()
         {
             GetClassList();
             ViewBag.classList = classList;
+            ViewBag.classList2 = new SelectList(classList2, "className", "className");
             return View();
         }
 
