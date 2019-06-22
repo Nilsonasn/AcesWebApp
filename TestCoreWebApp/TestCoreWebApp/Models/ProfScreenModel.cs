@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace AcesWebApp.Models
         public string unitTestFileLocation { get; set; }
         public string studentRepoLocation { get; set; }
         public string securityKey { get; set; }
+
+        public IFormFile professorUnitTest { get; set; }
 
         public ProfScreenModel()
         {

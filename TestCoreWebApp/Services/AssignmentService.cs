@@ -25,14 +25,13 @@ namespace Services
             String instUnitLocation = Path.GetFullPath(@"..\Services\TestingResources\UnitTests_InstructorVersion.cpp");
 
             UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
+
             
             ClassRoom classroom = new ClassRoom("weberstate4450summer2019", rosterLocation, "4450FinalClassroom");
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
             
-            Analyze.run(classroom, "test-assignment", repoLocation,
-               
-                            useKey, instUnitLocation, "23456");
+            Analyze.run(classroom, "test-assignment", repoLocation, useKey, instUnitLocation, "23456");
 
             foreach (Student s in classroom.Students)
             {

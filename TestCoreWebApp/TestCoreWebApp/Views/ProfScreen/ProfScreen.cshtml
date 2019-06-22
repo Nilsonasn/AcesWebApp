@@ -19,73 +19,51 @@
 <body>
     <h1>Prof Screen</h1>
 
-    <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
-        <!--<form asp-controller="ProfSceenController" asp-action="GetClassList">-->
-        <select style="width:100%" asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
-        <!--</form>-->
+    <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="Assignments" method="post" class="mt-3">
+        <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
+            <!--<form asp-controller="ProfSceenController" asp-action="GetClassList">-->
+            <select style="width:100%" asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
+            <!--</form>-->
 
 
-        @Html.TextBoxFor(model => model.assignmentName, new { style = "width:100%", @placeholder = "Assignment Name" })
-        <br>
-        @Html.TextBoxFor(model => model.unitTestFileLocation, new { style = "width:100%", @placeholder = "Unit Test File" })
-        <br>
-        @Html.TextBoxFor(model => model.studentRepoLocation, new { style = "width:100%", @placeholder = "Student Repo Location" })
-        <br>
-        @Html.TextBoxFor(model => model.securityKey, new { style = "width:100%", @placeholder = "Security Key" })
-        <br>
-        <input type="file" name="files" />
-        <a href="" style="margin-right:15%">Delete Class</a> <a href="" style="margin-right:20%">Create Class</a> <a href="" style="margin-right:2%">Check</a>
-    </div>
-
-    <form method="post" enctype="multipart/form-data" action="Index">
-        <div>
-            <p>Upload one or more files using this form:</p>
-            <input type="file" name="files" />
-        </div>
-        <div>
-            <input type="submit" value="Upload" />
-        </div>
-    </form>
-
-    <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-        <div class="form-group">
-            <div class="col-md-10">
-                <p>Upload one or more files using this form:</p>
-                <input type="file" name="files">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Upload">
-            </div>
-        </div>
-    </form>
-
-
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form asp-controller="ProfScreenController" asp-action="UploadSmallFile" enctype="multipart/form-data" id="BlobUploadForm" method="post" class="form-label-left" role="form">
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                <span class="btn btn-primary">
-                                    Browse… <input type="file" style="display: none;" name="file" id="FileInput">
-                                </span>
-                            </label>
-                            <input type="text" class="form-control" readonly="" id="BrowseInput">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <button type="submit" value="Upload Small File" class="btn btn-default" id="UploadSmallFile">Upload Small File</button>
-                            <button type="button" value="Upload Streaming File" class="btn btn-default" id="UploadStreamingFile" onclick="uploadStreamingFile()">Upload Streaming File</button>
-                        </div>
+            @Html.TextBoxFor(model => model.assignmentName, new { style = "width:100%", @placeholder = "Assignment Name" })
+            <br>
+            @Html.TextBoxFor(model => model.unitTestFileLocation, new { style = "width:100%", @placeholder = "Unit Test File" })
+            <br>
+            @Html.TextBoxFor(model => model.studentRepoLocation, new { style = "width:100%", @placeholder = "Student Repo Location" })
+            <br>
+            @Html.TextBoxFor(model => model.securityKey, new { style = "width:100%", @placeholder = "Security Key" })
+            <br>
+            <!--<input type="file" name="files" />-->
+            <div class="form-group row">
+                <label asp-for="professorUnitTest" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input asp-for="professorUnitTest" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Choose Professor Unit Test</label>
                     </div>
                 </div>
-            </form>
+            </div>
+            <a href="" style="margin-right:15%">Delete Class</a> <a href="" style="margin-right:20%">Create Class</a> <a href="" style="margin-right:2%">Check</a>
+            <button type="submit" class="btn btn-primary">Check</button>
+
+            
         </div>
-    </div>
+
+        
+
+
+        @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
+                    });
+                });
+            </script>
+        }
+    </form>
 
 
 </body>

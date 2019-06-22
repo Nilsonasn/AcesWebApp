@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;//
 using Microsoft.AspNetCore.Http;
 using System.Text;
 using Microsoft.AspNetCore.Hosting;
+using Services;
 
 namespace AcesWebApp.Controllers
 {
@@ -18,10 +19,14 @@ namespace AcesWebApp.Controllers
     {
 
         private IHostingEnvironment _hostingEnvironment;
+        private AssignmentService _assignmentService;
 
-        public ProfScreenController(IHostingEnvironment environment)
+        public ProfScreenController(IHostingEnvironment environment, AssignmentService assignmentService)
         {
             _hostingEnvironment = environment;
+            _assignmentService = assignmentService;
+
+
         }
 
         ObservableCollection<Services.ClassRoom> classList = new ObservableCollection<Services.ClassRoom>();
@@ -63,80 +68,27 @@ namespace AcesWebApp.Controllers
 
             return View(vm);
         }
-        
-	    [HttpPost]
-        public IActionResult Index(List<IFormFile> files)
-        {
-            var result = new StringBuilder();
-            using (var reader = new StreamReader(files[0].OpenReadStream()))
-            {
-                while (reader.Peek() >= 0)
-                    result.AppendLine(reader.ReadLine());
-            }
-            String Content = result.ToString();
-                //Do something with the files here. 
-                return Ok();
-        }
 
         [HttpPost]
-        public async Task<IActionResult> UploadSmallFile(IFormFile file)
+        public IActionResult Assignments(ProfScreenModel model)
         {
-            // full path to file in temp location
-            var filePath = Path.GetTempFileName();
-
-            if (file.Length > 0)
+            if(ModelState.IsValid)
             {
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                if(model.professorUnitTest != null)
                 {
-                    await file.CopyToAsync(stream);
+                    string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "instructorUnitTest");
+                    string filePath = Path.Combine(uploadFolder, "instructorUnitTest.cpp");
+                    model.professorUnitTest.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
             }
 
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
+            //To do: create new assignment service odjecct passing in correct info
 
-            return Ok();
-        }
+            var assignments = _assignmentService.GetAssignment();
 
+            return View(assignments);
 
-        [HttpPost("UploadFiles")]
-        public async Task<IActionResult> Post(List<IFormFile> files)
-        {
-            /* long size = files.Sum(f => f.Length);
-
-             // full path to file in temp location
-             var filePath = Path.GetTempFileName();
-
-             foreach (var formFile in files)
-             {
-                 if (formFile.Length > 0)
-                 {
-                     using (var stream = new FileStream(filePath, FileMode.Create))
-                     {
-                         await formFile.CopyToAsync(stream);
-                     }
-                 }
-             }*/
-
-            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedFiles");
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
-                {
-
-                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
-                }
-            }
-
-
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
-
-            //return Ok(new { count = files.Count, size, filePath });
-            return Ok();
+            //return View();
         }
 
 
