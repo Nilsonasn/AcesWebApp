@@ -31,6 +31,10 @@ namespace AcesWebApp.Controllers
             if (ModelState.IsValid)
             {
                 string uniqueFileName = null;
+
+                //creates the needed directory if it doesn't exist
+                System.IO.Directory.CreateDirectory(hostingEnvironment.WebRootPath + @"/" + "studentCode");
+
                 if (model.StudentUnitTest != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
