@@ -11,5 +11,7 @@ namespace AcesWebApp.Models
     {
         public List<IFormFile> StudentProgramFiles { get; set; }
         public IFormFile StudentUnitTest { get; set; }
+        public string StudentProgramCode { get; set; }
+        public string StudentUnitCode { get; set; }
     }
 }

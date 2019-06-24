@@ -30,7 +30,7 @@ namespace AcesWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
+                string fileName = null;
 
                 //creates the needed directory if it doesn't exist
                 System.IO.Directory.CreateDirectory(hostingEnvironment.WebRootPath + @"/" + "studentCode");
@@ -38,8 +38,8 @@ namespace AcesWebApp.Controllers
                 if (model.StudentUnitTest != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.StudentUnitTest.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    fileName = model.StudentUnitTest.FileName;  //Guid.NewGuid().ToString() + "_" + model.StudentUnitTest.FileName;
+                    string filePath = Path.Combine(uploadsFolder, fileName);
                     model.StudentUnitTest.CopyTo(new FileStream(filePath, FileMode.Create));
 
                 }
@@ -49,11 +49,35 @@ namespace AcesWebApp.Controllers
                     foreach (IFormFile studentFile in model.StudentProgramFiles)
                     {
                         string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
-                        uniqueFileName = Guid.NewGuid().ToString() + "_" + studentFile.FileName;
-                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        fileName = studentFile.FileName;  //Guid.NewGuid().ToString() + "_" + studentFile.FileName;
+                        string filePath = Path.Combine(uploadsFolder, fileName);
                         studentFile.CopyTo(new FileStream(filePath, FileMode.Create));
                     }               
 
+                }
+
+               if(model.StudentProgramCode != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
+                    fileName = "StudentProgram.cpp";   //Guid.NewGuid().ToString() + "_StudentCode.cpp";
+                    string filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (System.IO.StreamWriter file = new StreamWriter(System.IO.File.Create(filePath)))
+                    {
+                        file.WriteLine(model.StudentProgramCode.ToString());
+                    }                    
+                }
+
+                if (model.StudentUnitCode != null)
+                {
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
+                    fileName = "StudentUnitTests.cpp";   //Guid.NewGuid().ToString() + "_StudentCode.cpp";
+                    string filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (System.IO.StreamWriter file = new StreamWriter(System.IO.File.Create(filePath)))
+                    {
+                        file.WriteLine(model.StudentUnitCode.ToString());
+                    }
                 }
 
             }            
