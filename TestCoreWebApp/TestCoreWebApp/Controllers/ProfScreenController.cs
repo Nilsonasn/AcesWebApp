@@ -21,23 +21,27 @@ namespace AcesWebApp.Controllers
         private IHostingEnvironment _hostingEnvironment;
         private AssignmentService _assignmentService;
 
+        //public List<Services.ClassRoom> classList;
+
         public ProfScreenController(IHostingEnvironment environment, AssignmentService assignmentService)
         {
             _hostingEnvironment = environment;
             _assignmentService = assignmentService;
-
+            
 
         }
 
-        ObservableCollection<Services.ClassRoom> classList = new ObservableCollection<Services.ClassRoom>();
-        List<Services.ClassRoom> classList2 = new List<Services.ClassRoom>();
+        //ObservableCollection<Services.ClassRoom> classList = new ObservableCollection<Services.ClassRoom>();
+        //List<Services.ClassRoom> classList2 = new List<Services.ClassRoom>();
+        
 
         [Route("ProfScreen")]
         public IActionResult ProfScreen()
         {
+            //classList = new List<Services.ClassRoom>();
             GetClassList();
-            ViewBag.classList = classList;
-            ViewBag.classList2 = new SelectList(classList2, "className", "className");
+            //ViewBag.classList = classList;
+            //ViewBag.classList2 = new SelectList(classList2, "className", "className");
             return View();
         }
 
@@ -59,7 +63,7 @@ namespace AcesWebApp.Controllers
                         {
                             string[] items = currentLine.Split(',');
                             vm.classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
-                        }
+                    }
 
                     }
                 }
@@ -72,17 +76,51 @@ namespace AcesWebApp.Controllers
         [HttpPost]
         public IActionResult Assignments(ProfScreenModel model)
         {
-            if(ModelState.IsValid)
+            string instructorUTPath = "";
+            ClassRoom classR = null;
+
+            if (ModelState.IsValid)
             {
                 if(model.professorUnitTest != null)
                 {
                     string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "instructorUnitTest");
-                    string filePath = Path.Combine(uploadFolder, "instructorUnitTest.cpp");
-                    model.professorUnitTest.CopyTo(new FileStream(filePath, FileMode.Create));
+                    instructorUTPath = Path.Combine(uploadFolder, model.assignmentName + "InstructorUnitTest.cpp");
+                    model.professorUnitTest.CopyTo(new FileStream(instructorUTPath, FileMode.Create));
                 }
             }
 
+            List<Services.ClassRoom> classList = new List<Services.ClassRoom>();
+            string path = "C:\\Users\\User\\Desktop\\classlist.csv";
+
+            if (System.IO.File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamReader sr = System.IO.File.OpenText(path))
+                {
+                    string currentLine = "";
+                    while ((currentLine = sr.ReadLine()) != null && currentLine != "")
+                    {
+                        string[] items = currentLine.Split(',');
+                        classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
+                    }
+
+                }
+            }
+
+
+            foreach (Services.ClassRoom c in classList)
+            {
+                if (c.Name == model.className)
+                {
+                    classR = c;
+                }
+            }
+
+            string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
+
             //To do: create new assignment service odjecct passing in correct info
+            _assignmentService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+            
 
             var assignments = _assignmentService.GetAssignment();
 

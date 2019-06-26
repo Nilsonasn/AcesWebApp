@@ -28,13 +28,8 @@
 
             @Html.TextBoxFor(model => model.assignmentName, new { style = "width:100%", @placeholder = "Assignment Name" })
             <br>
-            @Html.TextBoxFor(model => model.unitTestFileLocation, new { style = "width:100%", @placeholder = "Unit Test File" })
-            <br>
-            @Html.TextBoxFor(model => model.studentRepoLocation, new { style = "width:100%", @placeholder = "Student Repo Location" })
-            <br>
             @Html.TextBoxFor(model => model.securityKey, new { style = "width:100%", @placeholder = "Security Key" })
             <br>
-            <!--<input type="file" name="files" />-->
             <div class="form-group row">
                 <label asp-for="professorUnitTest" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">

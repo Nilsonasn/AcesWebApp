@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\instructorUnitTest\" />
+    <Folder Include="wwwroot\studentRepo\" />
   </ItemGroup>
 
 </Project>
