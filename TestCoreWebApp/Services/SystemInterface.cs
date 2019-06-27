@@ -59,7 +59,7 @@ namespace Services
                 string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
                 cmd.StandardInput.WriteLine(buildCmd);
                 
-                 //Waits for the compiler to compile the program before continuing
+                //Waits for the compiler to compile the program before continuing
                 int timeOut = 0;
                 while (!(File.Exists(String.Format(@"{0}\UnitTests_InstructorVersion.exe", studentProjLocation))))
                 {

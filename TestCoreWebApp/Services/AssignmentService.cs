@@ -13,9 +13,7 @@ namespace Services
 
         public AssignmentService()
         {
-             assignments = new List<Assignment>();
-
-            String here = Directory.GetCurrentDirectory();
+            assignments = new List<Assignment>();            
 
             //roster Location
             String rosterLocation = Path.GetFullPath(@"..\Services\TestingResources\classroom_roster.csv");
