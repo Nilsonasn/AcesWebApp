@@ -19,14 +19,14 @@ namespace AcesWebApp.Controllers
     {
 
         private IHostingEnvironment _hostingEnvironment;
-        private AssignmentService _assignmentService;
+        //private AssignmentService _assignmentService;
 
         //public List<Services.ClassRoom> classList;
 
-        public ProfScreenController(IHostingEnvironment environment, AssignmentService assignmentService)
+        public ProfScreenController(IHostingEnvironment environment/*, AssignmentService assignmentService*/)
         {
             _hostingEnvironment = environment;
-            _assignmentService = assignmentService;
+            //_assignmentService = assignmentService;
             
 
         }
@@ -63,6 +63,7 @@ namespace AcesWebApp.Controllers
                         {
                             string[] items = currentLine.Split(',');
                             vm.classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
+
                     }
 
                     }
@@ -119,8 +120,8 @@ namespace AcesWebApp.Controllers
             string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
 
             //To do: create new assignment service odjecct passing in correct info
-            _assignmentService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
-            
+            AssignmentService _assignmentService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+            //AssignmentService _assignmentService = new AssignmentService();
 
             var assignments = _assignmentService.GetAssignment();
 

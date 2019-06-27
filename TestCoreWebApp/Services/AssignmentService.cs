@@ -32,7 +32,7 @@ namespace Services
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
             
-            Analyze.run(classroom, "test-assignment", repoLocation, useKey, instUnitLocation, "23456");
+            Analyze.run(classroom, "test-assignment", repoLocation, useKey, /*instUnitLocation*/ rosterLocation, "23456");
 
             foreach (Student s in classroom.Students)
             {
@@ -65,7 +65,7 @@ namespace Services
             //repo location
             //String repoLocation = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
             //instructor unit test UnitLocation
-            //String instUnitLocation = Path.GetFullPath(@"..\Services\TestingResources\UnitTests_InstructorVersion.cpp");
+            String instUnitLocation = Path.GetFullPath(@"..\Services\TestingResources\UnitTests_InstructorVersion.cpp");
 
             UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
 
@@ -80,7 +80,7 @@ namespace Services
             {
                 Assignment assignment = new Assignment()
                 {
-                    AssignmentName = "test-assignment",
+                    AssignmentName = assignName,
                     StudentName = s.Name,
                     Compiler = s.Compiler,
                     Rating = s.Rating,

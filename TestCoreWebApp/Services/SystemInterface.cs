@@ -56,12 +56,14 @@ namespace Services
                 cmd.StandardInput.WriteLine("cd " + compLocation);
 
                 //Build the project
-                string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
+                //string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}test-assignmentInstructorUnitTest -lm", studentProjLocation + @"\", studentProjLocation + @"\");
                 cmd.StandardInput.WriteLine(buildCmd);
                 
                  //Waits for the compiler to compile the program before continuing
                 int timeOut = 0;
-                while (!(File.Exists(String.Format(@"{0}\UnitTests_InstructorVersion.exe", studentProjLocation))))
+                //while (!(File.Exists(String.Format(@"{0}\UnitTests_InstructorVersion.exe", studentProjLocation))))
+                while (!(File.Exists(String.Format(@"{0}\test-assignmentInstructorUnitTest.exe", studentProjLocation))))
                 {
                     Thread.Sleep(1000);
                     timeOut++;
@@ -74,7 +76,8 @@ namespace Services
                 }
 
                 //Run the project
-                string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
+                //string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
+                string runCmd = String.Format(@"{0}\test-assignmentInstructorUnitTest", studentProjLocation);
                 cmd.StandardInput.WriteLine(runCmd);
 
                 cmd.StandardInput.WriteLine("exit");
