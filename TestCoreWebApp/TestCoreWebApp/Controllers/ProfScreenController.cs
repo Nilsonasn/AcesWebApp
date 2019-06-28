@@ -36,18 +36,18 @@ namespace AcesWebApp.Controllers
         
 
         [Route("ProfScreen")]
-        public IActionResult ProfScreen()
+        public IActionResult ProfScreen(ProfScreenModel model)
         {
             //classList = new List<Services.ClassRoom>();
-            GetClassList();
+            GetClassList(model);
             //ViewBag.classList = classList;
             //ViewBag.classList2 = new SelectList(classList2, "className", "className");
             return View();
         }
 
-        private IActionResult GetClassList()
+        private IActionResult GetClassList(ProfScreenModel vm)
         {
-            var vm = new ProfScreenModel();
+            //var vm = new ProfScreenModel();
 
             // create a default path that is only used in the program. 
             //string path = "classlist.csv";
@@ -63,13 +63,12 @@ namespace AcesWebApp.Controllers
                         {
                             string[] items = currentLine.Split(',');
                             vm.classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
-
-                    }
+                        }
 
                     }
                 }
 
-            //vm.classList.Add(new Services.ClassRoom("weberstate4450summer2019", "C:\\Users\\User\\Desktop\\classroom_roster1.csv", "4450FinalClassroom"));
+            vm.classList.Add(new Services.ClassRoom(vm.createOrgName, "C:\\Users\\User\\Desktop\\classroom_roster1.csv", vm.createClassName));
 
             return View(vm);
         }
