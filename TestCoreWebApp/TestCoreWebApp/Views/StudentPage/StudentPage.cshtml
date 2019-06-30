@@ -24,7 +24,7 @@
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <div class="custom-file">
-                                <input asp-for="StudentProgramFiles" class="form-control custom-file-input" type="file"  />
+                                <input multiple asp-for="StudentProgramFiles" class="form-control custom-file-input" type="file"  />
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
 
     <h3>Output: </h3>
 
-    <textarea class="OutputWindow"></textarea>
+    <textarea class="OutputWindow">@Model.StudentResults</textarea>
 
 </body>
 </html>

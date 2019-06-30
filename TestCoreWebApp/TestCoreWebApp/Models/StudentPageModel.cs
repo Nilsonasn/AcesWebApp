@@ -9,10 +9,10 @@ namespace AcesWebApp.Models
 {
     public class StudentPageModel
     {
-        public IFormFile StudentProgramFiles { get; set; }
+        public List<IFormFile> StudentProgramFiles { get; set; }
         public IFormFile StudentUnitTest { get; set; }
         public string StudentProgramCode { get; set; }
         public string StudentUnitCode { get; set; }
-        public string StudentResults { get; set; } = "This is the default value";
+        public string StudentResults { get; set; }
     }
 }

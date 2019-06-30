@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using AcesWebApp.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
+
+
 
 
 namespace AcesWebApp.Controllers
@@ -24,13 +24,13 @@ namespace AcesWebApp.Controllers
         }
 
         [Route("StudentPage")]
-        public IActionResult StudentPage()
+        public IActionResult StudentPage(StudentPageModel model)
         {
-            return View();
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Results(StudentPageModel model)
+        public async Task<IActionResult> Results(StudentPageModel model)
         {
             if (ModelState.IsValid)
             {
@@ -43,13 +43,17 @@ namespace AcesWebApp.Controllers
                 if (model.StudentProgramFiles != null)
                 {
 
-                    // foreach (IFormFile studentFile in model.StudentProgramFiles)
-                    // {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
-                    fileName = model.StudentProgramFiles.FileName;  //Guid.NewGuid().ToString() + "_" + model.StudentUnitTest.FileName;
-                    string filePath = Path.Combine(uploadsFolder, fileName);
-                    model.StudentProgramFiles.CopyTo(new FileStream(filePath, FileMode.Create));
-                    // }               
+                    foreach (IFormFile studentFile in model.StudentProgramFiles)
+                    {
+                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
+                        fileName = studentFile.FileName;  //Guid.NewGuid().ToString() + "_" + model.StudentUnitTest.FileName;
+                        string filePath = Path.Combine(uploadsFolder, fileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await studentFile.CopyToAsync(fileStream);
+                        }
+                           
+                    }               
 
                 }
                 else if (model.StudentProgramCode != null)
@@ -69,7 +73,11 @@ namespace AcesWebApp.Controllers
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
                     fileName = model.StudentUnitTest.FileName;  //Guid.NewGuid().ToString() + "_" + model.StudentUnitTest.FileName;
                     string filePath = Path.Combine(uploadsFolder, fileName);
-                    model.StudentUnitTest.CopyTo(new FileStream(filePath, FileMode.Create));
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await model.StudentUnitTest.CopyToAsync(fileStream);
+                    }
+                    //model.StudentUnitTest.CopyTo(new FileStream(filePath, FileMode.Create));
 
                 }
                 else if (model.StudentUnitCode != null)
@@ -84,13 +92,10 @@ namespace AcesWebApp.Controllers
                     }
                 }          
 
-                
+            }            
 
-            }
-
-            //model.StudentResults = Run(Path.Combine(hostingEnvironment.WebRootPath, "studentCode"));
-
-            return View(model);
+            model.StudentResults = Run(Path.Combine(hostingEnvironment.WebRootPath, "studentCode"));
+            return View("StudentPage", model);
         }
 
         public string Run(string studentProjLocation)
@@ -112,7 +117,7 @@ namespace AcesWebApp.Controllers
             cmd.StartInfo.UseShellExecute = false;
             cmd.StartInfo.RedirectStandardOutput = true;
             cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardError = true;
+            cmd.StartInfo.RedirectStandardError = true;           
             cmd.Start();
 
 
@@ -121,37 +126,34 @@ namespace AcesWebApp.Controllers
 
             //Build the project
             string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
-            cmd.StandardInput.WriteLine(buildCmd);
-
-            //Waits for the compiler to compile the program before continuing
-            // int timeOut = 0;
-            // while (!(File.Exists(String.Format(@"{0}\UnitTests_InstructorVersion.exe", studentProjLocation)))
-            // {
-            //    Thread.Sleep(1000);
-            //    timeOut++;
-
-            //    //timesout if 5 seconds have past
-            //    if (timeOut == 5)
-            //    {
-            //        break;
-            //    }
-            // }
+            cmd.StandardInput.WriteLine(buildCmd);            
 
             //Run the project
             string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
             cmd.StandardInput.WriteLine(runCmd);
 
-            cmd.StandardInput.WriteLine("exit");
+            cmd.StandardInput.WriteLine("exit");           
 
 
             List<string> lines = new List<string>();
 
+            bool startOfStudentOutput = false;
+
             // cycle though the lines of output untill it runs out and get the last line 
-            string output = cmd.StandardOutput.ReadLine();
+            string output = cmd.StandardOutput.ReadLine();            
+
             while (output != null)
             {
-                // get the last line in output. 
-                lines.Add(output);
+
+                if (output.Contains("Passed") || output.Contains("Failed"))
+                {
+                    startOfStudentOutput = true;
+                }
+
+                if (startOfStudentOutput)
+                {
+                    lines.Add(output);                    
+                }
                 output = cmd.StandardOutput.ReadLine();
             }
 
@@ -160,14 +162,13 @@ namespace AcesWebApp.Controllers
             while (error != null)
             {
                 // get the last line in output. 
-                lines.Add(error);
-                //
-                error = cmd.StandardError.ReadLine();
+                lines.Add(error);               
+                error = cmd.StandardError.ReadLine();                
             }
 
             foreach (string line in lines)
             {
-                RetString += line;
+                RetString += line + "\n";
             }
 
             return RetString;
