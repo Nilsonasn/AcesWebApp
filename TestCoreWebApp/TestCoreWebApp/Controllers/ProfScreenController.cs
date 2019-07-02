@@ -21,29 +21,19 @@ namespace AcesWebApp.Controllers
         private IHostingEnvironment _hostingEnvironment;
         //private AssignmentService _assignmentService;
 
-        //public List<Services.ClassRoom> classList;
-
-        public ProfScreenController(IHostingEnvironment environment/*, AssignmentService assignmentService*/)
+        public ProfScreenController(IHostingEnvironment environment)
         {
             _hostingEnvironment = environment;
-            //_assignmentService = assignmentService;
-            
-
         }
-
-        //ObservableCollection<Services.ClassRoom> classList = new ObservableCollection<Services.ClassRoom>();
-        //List<Services.ClassRoom> classList2 = new List<Services.ClassRoom>();
         
 
         [Route("ProfScreen")]
         public IActionResult ProfScreen(ProfScreenModel model)
         {
-            //classList = new List<Services.ClassRoom>();
             GetClassList(model);
-            //ViewBag.classList = classList;
-            //ViewBag.classList2 = new SelectList(classList2, "className", "className");
             return View();
         }
+
 
         private IActionResult GetClassList(ProfScreenModel vm)
         {
@@ -68,7 +58,12 @@ namespace AcesWebApp.Controllers
                     }
                 }
 
-            vm.classList.Add(new Services.ClassRoom(vm.createOrgName, "C:\\Users\\User\\Desktop\\classroom_roster1.csv", vm.createClassName));
+            if (vm.createClassName != null && vm.createOrgName != null)
+            {
+                vm.classList.Add(new Services.ClassRoom(vm.createOrgName, "C:\\Users\\User\\Desktop\\classroom_roster1.csv", vm.createClassName));
+                vm.createClassName = null;
+                vm.createOrgName = null;
+            }
 
             return View(vm);
         }
