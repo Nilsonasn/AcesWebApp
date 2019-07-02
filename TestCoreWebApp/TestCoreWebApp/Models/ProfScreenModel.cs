@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace AcesWebApp.Models
 {
 
-    public class ProfScreenModel
+    public class ProfScreenModel : PageModel
     {
         public List<Services.ClassRoom> classList { get; set; }
         public string className { get; set; }
