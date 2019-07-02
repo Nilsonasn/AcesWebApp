@@ -21,33 +21,23 @@ namespace AcesWebApp.Controllers
         private IHostingEnvironment _hostingEnvironment;
         //private AssignmentService _assignmentService;
 
-        //public List<Services.ClassRoom> classList;
-
-        public ProfScreenController(IHostingEnvironment environment/*, AssignmentService assignmentService*/)
+        public ProfScreenController(IHostingEnvironment environment)
         {
             _hostingEnvironment = environment;
-            //_assignmentService = assignmentService;
-            
-
         }
-
-        //ObservableCollection<Services.ClassRoom> classList = new ObservableCollection<Services.ClassRoom>();
-        //List<Services.ClassRoom> classList2 = new List<Services.ClassRoom>();
         
 
         [Route("ProfScreen")]
-        public IActionResult ProfScreen()
+        public IActionResult ProfScreen(ProfScreenModel model)
         {
-            //classList = new List<Services.ClassRoom>();
-            GetClassList();
-            //ViewBag.classList = classList;
-            //ViewBag.classList2 = new SelectList(classList2, "className", "className");
+            GetClassList(model);
             return View();
         }
 
-        private IActionResult GetClassList()
+
+        private IActionResult GetClassList(ProfScreenModel vm)
         {
-            var vm = new ProfScreenModel();
+            //var vm = new ProfScreenModel();
 
             // create a default path that is only used in the program. 
             //string path = "classlist.csv";
@@ -63,13 +53,17 @@ namespace AcesWebApp.Controllers
                         {
                             string[] items = currentLine.Split(',');
                             vm.classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
-
-                    }
+                        }
 
                     }
                 }
 
-            //vm.classList.Add(new Services.ClassRoom("weberstate4450summer2019", "C:\\Users\\User\\Desktop\\classroom_roster1.csv", "4450FinalClassroom"));
+            if (vm.createClassName != null && vm.createOrgName != null)
+            {
+                vm.classList.Add(new Services.ClassRoom(vm.createOrgName, "C:\\Users\\User\\Desktop\\classroom_roster1.csv", vm.createClassName));
+                vm.createClassName = null;
+                vm.createOrgName = null;
+            }
 
             return View(vm);
         }
