@@ -124,6 +124,12 @@ namespace AcesWebApp.Controllers
             //return View();
         }
 
+        public IActionResult StudentDetails(ProfScreenModel model, AssignmentService _assignmentService)
+        {
+            var assignments = _assignmentService.GetAssignment();
+            return View();
+        }
+
 
     }
 }
