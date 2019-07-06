@@ -23,6 +23,8 @@ namespace AcesWebApp.Models
         public string createOrgName { get; set; }
         public IFormFile roster { get; set; }
 
+        public int assingnmentID { get; set; }
+
         public ProfScreenModel()
         {
             classList = new List<Services.ClassRoom>();

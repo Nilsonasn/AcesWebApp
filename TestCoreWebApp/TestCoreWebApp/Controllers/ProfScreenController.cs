@@ -127,7 +127,8 @@ namespace AcesWebApp.Controllers
         public IActionResult StudentDetails(ProfScreenModel model, AssignmentService _assignmentService)
         {
             var assignments = _assignmentService.GetAssignment();
-            return View();
+            var assign = assignments.ElementAt(model.assingnmentID);
+            return View(assign);
         }
 
 

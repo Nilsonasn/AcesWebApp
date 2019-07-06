@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+@{
+    var assignment = Model;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Assignments</title>
+    <link rel="stylesheet" href="~/css/tablestyles.css">
+</head>
+<body>
+    <h1>
+        Detailed Information for @assignment.StudentName
+    </h1>
+
+    <table>
+        <tr id="TableHeader">
+            <th class="firstcol">Student Name</th>
+            <th>Rating</th>
+            <th>Score</th>
+            <th>Compiler</th>
+            <th>Number of Commits</th>
+            <th>Average Time Between</th>
+            <th>Standard Dev Commits</th>
+        </tr>
+
+
+ 
+        <tr>
+
+            <td class="firstcol">@assignment.StudentName</td>
+            <td>@assignment.Rating</td>
+            <td>@assignment.Score</td>
+            <td>@assignment.Compiler</td>
+            <td>@assignment.NumCommits</td>
+            <td>@assignment.AvgTimeCommit</td>
+            <td>@assignment.StDevCommit</td>
+        </tr>
+
+    </table>
+
+
+
+</body>
+</html>

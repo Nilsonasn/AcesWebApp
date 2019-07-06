@@ -5,6 +5,7 @@
 
 @{
     var assignments = Model;
+    int id = 0;
 }
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Assignemnts</title>
+    <title>Assignments</title>
     <link rel="stylesheet" href="~/css/tablestyles.css">
 </head>
 <body>
@@ -34,16 +35,21 @@
 
         @foreach (var assignment in assignments)
         {
-        <tr>
-            <td class="firstcol">@assignment.StudentName</td>
-            <td>@assignment.Rating</td>
-            <td>@assignment.Score</td>
-            <td>@assignment.Compiler</td>
-            <td>@assignment.NumCommits</td>
-            <td>@assignment.AvgTimeCommit</td>
-            <td>@assignment.StDevCommit</td>
-            <td><a asp-controller="ProfScreen" asp-action="StudentDetails"><button type="button" class="btn btn-primary">Details</button></a></td>
-        </tr>
+            
+        <form asp-controller="ProfScreen" asp-action="StudentDetails">
+            <tr>
+
+                <td class="firstcol">@assignment.StudentName</td>
+                <td>@assignment.Rating</td>
+                <td>@assignment.Score</td>
+                <td>@assignment.Compiler</td>
+                <td>@assignment.NumCommits</td>
+                <td>@assignment.AvgTimeCommit</td>
+                <td>@assignment.StDevCommit</td>
+                <td><button value="@id" name="assingnmentID">Details</button></td>
+            </tr>
+        </form>
+            id++;
 
         }
     </table>
