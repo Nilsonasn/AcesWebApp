@@ -36,6 +36,20 @@ namespace Services
 
             foreach (Student s in classroom.Students)
             {
+
+                //Calculate the time. Integer division is done intentionally
+                int seconds = (int)s.AvgTimeBetweenCommits;
+                int days = seconds / 86400;
+                seconds = seconds % 86400;
+                int hours = seconds / 3600;
+                seconds = seconds % 3600;
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+
+                //format
+                string AvgTimeBetweenCommits = days + ":" + hours
+                    + ":" + minutes + ":" + seconds;
+
                 Assignment assignment = new Assignment()
                 {
                     AssignmentName = "test-assignment",
@@ -44,9 +58,10 @@ namespace Services
                     Rating = s.Rating,
                     Score = s.StudentScore.ToString(),
                     NumCommits = s.NumStudentCommits,
-                    AvgTimeCommit = s.AvgTimeBetweenCommits,
-                    StDevCommit = s.StdDev,
-                    SourceCode = "stdout >> \"Hello World\"; "
+                    AvgTimeCommit = AvgTimeBetweenCommits,
+                    StDevCommit = s.StdDev.ToString("0,0.00"),
+                    ReasonsWhy = s.getReasonsWhy()
+                    //SourceCode = "stdout >> \"Hello World\";"
                 };
 
                 assignments.Add(assignment);
@@ -78,17 +93,33 @@ namespace Services
 
             foreach (Student s in classroom.Students)
             {
+
+                //Calculate the time. Integer division is done intentionally
+                int seconds = (int)s.AvgTimeBetweenCommits;
+                int days = seconds / 86400;
+                seconds = seconds % 86400;
+                int hours = seconds / 3600;
+                seconds = seconds % 3600;
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+
+                //format
+                string AvgTimeBetweenCommits = days + ":" + hours
+                    + ":" + minutes + ":" + seconds;
+
                 Assignment assignment = new Assignment()
                 {
+
                     AssignmentName = assignName,
                     StudentName = s.Name,
                     Compiler = s.Compiler,
                     Rating = s.Rating,
                     Score = s.StudentScore.ToString(),
                     NumCommits = s.NumStudentCommits,
-                    AvgTimeCommit = s.AvgTimeBetweenCommits,
-                    StDevCommit = s.StdDev,
-                    SourceCode = "stdout >> \"Hello World\"; "
+                    AvgTimeCommit = AvgTimeBetweenCommits,
+                    StDevCommit = s.StdDev.ToString("0,0.00"),
+                    ReasonsWhy = s.getReasonsWhy()
+                    //SourceCode = "stdout >> \"Hello World\"; "
                 };
 
                 assignments.Add(assignment);

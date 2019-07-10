@@ -128,6 +128,7 @@ namespace AcesWebApp.Controllers
         {
             var assignments = _assignmentService.GetAssignment();
             var assign = assignments.ElementAt(model.assingnmentID);
+
             return View(assign);
         }
 

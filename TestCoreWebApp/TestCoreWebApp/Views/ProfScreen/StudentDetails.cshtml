@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Assignments</title>
+    <title>Details</title>
     <link rel="stylesheet" href="~/css/tablestyles.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
         </tr>
 
 
- 
+
         <tr>
 
             <td class="firstcol">@assignment.StudentName</td>
@@ -46,6 +46,17 @@
 
     </table>
 
+    <br>
+
+    <div style="border-style: groove;">
+
+        @foreach (var line in assignment.ReasonsWhy)
+        {
+            <label>@line</label>
+            <br>
+        }
+
+    </div>
 
 
 </body>
