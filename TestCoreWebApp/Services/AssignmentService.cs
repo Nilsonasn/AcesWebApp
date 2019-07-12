@@ -32,7 +32,7 @@ namespace Services
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
             
-            Analyze.run(classroom, "test-assignment", repoLocation, useKey, /*instUnitLocation*/ rosterLocation, "23456");
+            Analyze.run(classroom, "test-assignment", repoLocation, useKey,  rosterLocation, "23456");
 
             foreach (Student s in classroom.Students)
             {
@@ -66,6 +66,7 @@ namespace Services
 
                 assignments.Add(assignment);
             }
+            
 
         }
 
@@ -139,5 +140,10 @@ namespace Services
 
             return assignments;
         }
+    }
+
+    public class myAssignmentService
+    {
+        public static AssignmentService assignService;
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using System.Text;
 using Microsoft.AspNetCore.Hosting;
 using Services;
+using Services.Entities;
 
 namespace AcesWebApp.Controllers
 {
@@ -19,7 +20,7 @@ namespace AcesWebApp.Controllers
     {
 
         private IHostingEnvironment _hostingEnvironment;
-        //private AssignmentService _assignmentService;
+        
 
         public ProfScreenController(IHostingEnvironment environment)
         {
@@ -114,20 +115,37 @@ namespace AcesWebApp.Controllers
             string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
 
             //To do: create new assignment service odjecct passing in correct info
-            AssignmentService _assignmentService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+            //AssignmentService _assignmentService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+
+            myAssignmentService.assignService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+            var assignments = myAssignmentService.assignService.GetAssignment();
+
             //AssignmentService _assignmentService = new AssignmentService();
 
-            var assignments = _assignmentService.GetAssignment();
+            //var assignments = _assignmentService.GetAssignment();
+            //model.assignments = _assignmentService.GetAssignment();
+            /*
+            List<Assignment> assignments = _assignmentService.GetAssignment();
+            TempData["assignments"] = _assignmentService.GetAssignment();
+            var assign = _assignmentService.GetAssignment();
+            */
 
+            //HttpContext.Session["assignments"] = _assignmentService.GetAssignment();
+            //_contextAccessor.HttpContext.Session.SetString
+
+
+            //Session["assignments"] = _assignmentService.GetAssignment();
             return View(assignments);
 
             //return View();
         }
 
-        public IActionResult StudentDetails(ProfScreenModel model, AssignmentService _assignmentService)
+        public IActionResult StudentDetails(ProfScreenModel model/*, AssignmentService _assignmentService*/)
         {
-            var assignments = _assignmentService.GetAssignment();
-            var assign = assignments.ElementAt(model.assingnmentID);
+            //var assignments = TempData["assignments"];
+            //List<Assignment> assignment = (List<Assignment>)assignments;
+            List<Assignment> assignment = myAssignmentService.assignService.GetAssignment();
+            var assign = assignment.ElementAt(model.assingnmentID);
 
             return View(assign);
         }

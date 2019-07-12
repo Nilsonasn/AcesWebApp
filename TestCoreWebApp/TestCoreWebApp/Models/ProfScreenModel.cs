@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Services.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace AcesWebApp.Models
         public IFormFile roster { get; set; }
 
         public int assingnmentID { get; set; }
+        public List<Assignment> assignments { get; set; }
+        public Assignment assignment { get; set; }
 
         public ProfScreenModel()
         {

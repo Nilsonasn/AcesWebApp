@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Services.Entities
 {
+
     public class Assignment
     {
         public string AssignmentName{ get; set; }
