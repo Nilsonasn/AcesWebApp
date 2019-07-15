@@ -14,35 +14,40 @@ using Microsoft.AspNetCore.Mvc;
 namespace AcesWebApp.Controllers
 {
     public class StudentPageController : Controller
-    {
+    {        
         private IHostingEnvironment hostingEnvironment;
+
+        //The return string for the output of the student program
         private string RetString;
 
         public StudentPageController(IHostingEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
         }
-
+        
         [Route("StudentPage")]
         public IActionResult StudentPage(StudentPageModel model)
         {
             return View(model);
         }
-
+        
+        //handles uploading the student code files and call compiler function at end
         [HttpPost]
         public async Task<IActionResult> Results(StudentPageModel model)
         {
+            //Make sure it is a valid model
             if (ModelState.IsValid)
             {
+                //string for the file name
                 string fileName = null;
 
                 //creates the needed directory if it doesn't exist
                 System.IO.Directory.CreateDirectory(hostingEnvironment.WebRootPath + @"/" + "studentCode");
 
-
+                //checks to make sure it is not empty. Uploads the student program code
                 if (model.StudentProgramFiles != null)
                 {
-
+                    //uploads each file in the list
                     foreach (IFormFile studentFile in model.StudentProgramFiles)
                     {
                         string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
@@ -56,6 +61,7 @@ namespace AcesWebApp.Controllers
                     }               
 
                 }
+                //handles uploading from the text box for sutdent code
                 else if (model.StudentProgramCode != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
@@ -68,6 +74,7 @@ namespace AcesWebApp.Controllers
                     }
                 }
 
+                //uploads the unit test
                 if (model.StudentUnitTest != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
@@ -76,10 +83,10 @@ namespace AcesWebApp.Controllers
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await model.StudentUnitTest.CopyToAsync(fileStream);
-                    }
-                    //model.StudentUnitTest.CopyTo(new FileStream(filePath, FileMode.Create));
+                    }                   
 
                 }
+                //creates file from text box for unit test
                 else if (model.StudentUnitCode != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "studentCode");
@@ -94,10 +101,13 @@ namespace AcesWebApp.Controllers
 
             }            
 
+            //save restults of the program in the model
             model.StudentResults = Run(Path.Combine(hostingEnvironment.WebRootPath, "studentCode"));
+            //returns the student page and model for proper diaplay on same page
             return View("StudentPage", model);
         }
 
+        //compiles and runs the students code
         public string Run(string studentProjLocation)
         {
 
@@ -109,27 +119,23 @@ namespace AcesWebApp.Controllers
             /// <summary>
             /// Compiler location
             /// </summary>
-            string compLocation = Path.GetFullPath(@"..\G++\bin\");
+            //string compLocation = Path.GetFullPath(@"..\G++\bin\");
 
             //A process is used to run commands on the command line
             Process cmd = new Process();
-            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.FileName = "/bin/bash";
             cmd.StartInfo.UseShellExecute = false;
             cmd.StartInfo.RedirectStandardOutput = true;
             cmd.StartInfo.RedirectStandardInput = true;
             cmd.StartInfo.RedirectStandardError = true;           
-            cmd.Start();
-
-
-            //Move to compiler location
-            cmd.StandardInput.WriteLine("cd " + compLocation);
+            cmd.Start();            
 
             //Build the project
-            string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
+            string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"/", studentProjLocation + @"/");
             cmd.StandardInput.WriteLine(buildCmd);            
 
             //Run the project
-            string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
+            string runCmd = String.Format(@"{0}/UnitTests_InstructorVersion", studentProjLocation);
             cmd.StandardInput.WriteLine(runCmd);
 
             cmd.StandardInput.WriteLine("exit");           
@@ -139,9 +145,10 @@ namespace AcesWebApp.Controllers
 
             bool startOfStudentOutput = false;
 
-            // cycle though the lines of output untill it runs out and get the last line 
+            // cycle through the lines of output untill it runs out and get the last line 
             string output = cmd.StandardOutput.ReadLine();            
 
+            //cycles through the lines of output until i find the start of the student units tests
             while (output != null)
             {
 
