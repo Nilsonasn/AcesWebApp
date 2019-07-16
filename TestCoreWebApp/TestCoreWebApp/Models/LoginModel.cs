@@ -9,6 +9,6 @@ namespace AcesWebApp.Models
 {
     public class LoginModel : PageModel
     {
-        
+            
     }
 }

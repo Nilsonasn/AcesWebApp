@@ -1,7 +1,5 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model AcesWebApp.ViewModels.LoginViewModel
+
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script rel="javascript" src="~/js/site.js"></script>
 
-    <h2>User Login</h2>
+    <h2>@Model.Title</h2>
+    
+    @foreach(var classroom in Model.Classrooms)
+    {
+        <h3>@classroom.className</h3>
+    }
 
     <form method="post">
         <input type="hidden"/>

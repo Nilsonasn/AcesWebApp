@@ -1,3 +1,0 @@
-﻿CREATE LOGIN [TestUser]
-    WITH PASSWORD = N'st,aiuwoakkL{ZysNeroI3|omsFT7_&#$!~<lH{wimbhvxyj', SID = 0xCD6FEF50C7055846A96EA040927C37F8, DEFAULT_DATABASE = [Aces], DEFAULT_LANGUAGE = [us_english];
-
