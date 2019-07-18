@@ -24,5 +24,18 @@ namespace AcesWebApp.Models.Classrooms
         {
             return _appDbContext.Classrooms.FirstOrDefault(c => c.classId == classId);
         }
+
+        public void AddClassroom(Classroom classroom)
+        {
+            _appDbContext.Classrooms.Add(classroom);
+            _appDbContext.SaveChanges();
+        }
+
+        public void RemoveClassroomById(int classId)
+        {
+            Classroom classroom = _appDbContext.Classrooms.FirstOrDefault(c => c.classId == classId);
+            _appDbContext.Classrooms.Remove(classroom);
+            _appDbContext.SaveChanges();
+        }
     }
 }

@@ -13,6 +13,9 @@ using System.Text;
 using Microsoft.AspNetCore.Hosting;
 using Services;
 using Services.Entities;
+using AcesWebApp.Models.Classrooms;
+using AcesWebApp.Models.Students;
+using AcesWebApp.ViewModels;
 
 namespace AcesWebApp.Controllers
 {
@@ -20,21 +23,60 @@ namespace AcesWebApp.Controllers
     {
 
         private IHostingEnvironment _hostingEnvironment;
-        
 
-        public ProfScreenController(IHostingEnvironment environment)
+        private readonly IClassroomRepository _classroomRepository;
+        private readonly IStudentRepository _studentRepository;
+
+        public ProfScreenController(IHostingEnvironment environment, IClassroomRepository classroomRepository, IStudentRepository studentRepository)
         {
             _hostingEnvironment = environment;
+            _studentRepository = studentRepository;
+            _classroomRepository = classroomRepository;
         }
         
 
         [Route("ProfScreen")]
-        public IActionResult ProfScreen(ProfScreenModel model)
+        public IActionResult ProfScreen()
         {
-            GetClassList(model);
+            var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
+            var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
+            var profScreenViewModel = new ProfScreenViewModel()
+            {
+                Classrooms = classes.ToList(),
+                Students = students.ToList()
+                
+            };
+            return View(profScreenViewModel);
+        }
+
+        [Route("ProfScreen")]
+        [HttpPost]
+        public IActionResult ProfScreen(ProfScreenViewModel profScreenViewModel)
+        {
+            _classroomRepository.AddClassroom(profScreenViewModel.classroom);
+            var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
+            var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
+            profScreenViewModel = new ProfScreenViewModel()
+            {
+                Classrooms = classes.ToList(),
+                Students = students.ToList()
+
+            };
+            return View(profScreenViewModel);
+        }
+        
+        public IActionResult CreateClass()
+        {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult DeleteClass(ProfScreenViewModel profScreenViewModel)
+        {
+            _classroomRepository.RemoveClassroomById(int.Parse(profScreenViewModel.ClassDelete));
+            return View();
+            
+        }
 
         private IActionResult GetClassList(ProfScreenModel vm)
         {
