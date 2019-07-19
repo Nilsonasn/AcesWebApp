@@ -26,6 +26,7 @@ namespace AcesWebApp.ViewModels
         public string studentRepoLocation { get; set; }
         public string securityKey { get; set; }
         public IFormFile professorUnitTest { get; set; }
+        public int classId { get; set; }
 
         public string ClassDelete { get; set; }
 

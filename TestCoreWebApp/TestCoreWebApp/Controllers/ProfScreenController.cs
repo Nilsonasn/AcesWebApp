@@ -157,11 +157,44 @@ namespace AcesWebApp.Controllers
             return View(vm);
         }
 
-        [HttpPost]
-        public IActionResult Assignments(ProfScreenModel model)
+        private Services.ClassRoom GetClassroom(ProfScreenViewModel model)
         {
+            //_classroomRepository.AddClassroom(model.classroom);
+            var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
+            var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
+            model = new ProfScreenViewModel()
+            {
+                Classrooms = classes.ToList(),
+                Students = students.ToList()
+
+            };
+
+            IEnumerable<Models.Students.Student> ClassStudents = _studentRepository.GetAllStudentsInClass(model.classId);
+            List<Models.Students.Student> studentList = ClassStudents.ToList();
+            ObservableCollection<Services.Student> classStuds = new ObservableCollection<Services.Student>();
+
+            foreach (Models.Students.Student s in studentList)
+            {
+                Services.Student tempStudent = new Services.Student(s.name, s.githubUrsName, s.githubEmail);
+                classStuds.Add(tempStudent);
+            }
+
+            //string className = _classroomRepository.GetClassroomById(model.classId).className;
+            //string orgName = _classroomRepository.GetClassroomById(model.classId).orgName;
+
+            string className = model.Classrooms.ElementAt(model.classId).className;
+            string orgName = model.Classrooms.ElementAt(model.classId).orgName;
+
+            return new Services.ClassRoom(className, orgName, classStuds);
+
+        }
+
+        [HttpPost]
+        public IActionResult Assignments(ProfScreenViewModel model)
+        {
+
             string instructorUTPath = "";
-            ClassRoom classR = null;
+            Services.ClassRoom classR = GetClassroom(model);
 
             if (ModelState.IsValid)
             {
@@ -173,6 +206,7 @@ namespace AcesWebApp.Controllers
                 }
             }
 
+            /*
             List<Services.ClassRoom> classList = new List<Services.ClassRoom>();
             string path = "C:\\Users\\User\\Desktop\\classlist.csv";
 
@@ -199,6 +233,7 @@ namespace AcesWebApp.Controllers
                     classR = c;
                 }
             }
+            */
 
             string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
 

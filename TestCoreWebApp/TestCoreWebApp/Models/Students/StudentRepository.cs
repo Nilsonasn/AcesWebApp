@@ -24,6 +24,12 @@ namespace AcesWebApp.Models.Students
         {
             return _appDbContext.Students.FirstOrDefault(s => s.id == studentId);
         }
+
+        public IEnumerable<Student> GetAllStudentsInClass(int classId)
+        {
+            return _appDbContext.Students.Where(c => c.classId == classId);
+        }
+
         public void AddStudent(Student student)
         {
             _appDbContext.Students.Add(student);

@@ -59,6 +59,14 @@ namespace Services
             git = new GitInterface();
         }
 
+        public ClassRoom(string nameOfOrgansation, string name, ObservableCollection<Student> students)
+        {
+            NameOfOrganization = nameOfOrgansation;
+            Name = name;
+            Students = students;
+            git = new GitInterface();
+        }
+
         /// <summary>
         /// Default Constructor.
         /// </summary>
