@@ -54,6 +54,52 @@ namespace AcesWebApp.Controllers
         public IActionResult ProfScreen(ProfScreenViewModel profScreenViewModel)
         {
             _classroomRepository.AddClassroom(profScreenViewModel.classroom);
+            List<string> roster = new List<string>();
+            if (profScreenViewModel.roster != null)
+            {
+               roster = iformreader.ReadAsList(profScreenViewModel.roster);
+            }
+            foreach (string input in roster)
+            {
+                if (input != "\"identifier\",\"github_username\",\"github_id\",\"name\"")
+                {
+                    string[] line = input.Split(',');
+
+                    // only input students that have connected to github classroom 
+                    if (line[1].Trim('"') != "")
+                    {
+                        // get the student username and id set by the teacher. 
+                        if (line[3].Trim('"') == "")
+                        {
+                            // Students.Add(new Student(line[0].Trim('"'), line[1].Trim('"'), line[0].Trim('"')));
+                            Models.Students.Student student = new Models.Students.Student()
+                            {
+                                githubEmail = line[0].Trim('"'),
+                                githubUrsName = line[1].Trim('"'),
+                                name = line[0].Trim('"'),
+                                classId = profScreenViewModel.classroom.classId
+
+                            };
+                            _studentRepository.AddStudent(student);
+                        }
+                        else
+                        {
+                            // Students.Add(new Student(line[3].Trim('"'), line[1].Trim('"'), line[0].Trim('"')));
+                            Models.Students.Student student = new Models.Students.Student()
+                            {
+                                githubEmail = line[0].Trim('"'),
+                                githubUrsName = line[1].Trim('"'),
+                                name = line[3].Trim('"'),
+                                classId = profScreenViewModel.classroom.classId
+
+                            };
+                            _studentRepository.AddStudent(student);
+
+                        }
+
+                    }
+                }
+            }
             var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
             var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
             profScreenViewModel = new ProfScreenViewModel()
@@ -192,6 +238,23 @@ namespace AcesWebApp.Controllers
             return View(assign);
         }
 
+        
+
 
     }
+
+    public static class iformreader
+    {
+        public static List<string> ReadAsList(this IFormFile file)
+        {
+            List<string> result = new List<string>();
+            using (var reader = new StreamReader(file.OpenReadStream()))
+            {
+                while (reader.Peek() >= 0)
+                    result.Add(reader.ReadLine());
+            }
+
+            return result;
+        }
+    } 
 }

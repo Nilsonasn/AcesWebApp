@@ -9,5 +9,6 @@ namespace AcesWebApp.Models.Students
     {
         IEnumerable<Student> GetAllStudents();
         Student GetStudentById(int studentId);
+        void AddStudent(Student student);
     }
 }
