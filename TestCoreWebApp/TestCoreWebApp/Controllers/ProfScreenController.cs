@@ -169,7 +169,29 @@ namespace AcesWebApp.Controllers
 
             };
 
-            IEnumerable<Models.Students.Student> ClassStudents = _studentRepository.GetAllStudentsInClass(model.classId);
+            /*IEnumerable<Models.Students.Student> ClassStudents = _studentRepository.GetAllStudentsInClass(model.classId);
+            List<Models.Students.Student> studentList = ClassStudents.ToList();
+            ObservableCollection<Services.Student> classStuds = new ObservableCollection<Services.Student>();
+
+            foreach (Models.Students.Student s in studentList)
+            {
+                Services.Student tempStudent = new Services.Student(s.name, s.githubUrsName, s.githubEmail);
+                classStuds.Add(tempStudent);
+            }
+            */
+
+            //string className = _classroomRepository.GetClassroomById(model.classId).className;
+            //string orgName = _classroomRepository.GetClassroomById(model.classId).orgName;
+
+            //string className = model.Classrooms.ElementAt(model.classId).className;
+            //string orgName = model.Classrooms.ElementAt(model.classId).orgName;
+
+            string className = model.Classrooms.ElementAt(model.classId).className;
+            string orgName = model.Classrooms.ElementAt(model.classId).orgName;
+
+            int classId  = _classroomRepository.GetIdByName(className);
+
+            IEnumerable<Models.Students.Student> ClassStudents = _studentRepository.GetAllStudentsInClass(classId);
             List<Models.Students.Student> studentList = ClassStudents.ToList();
             ObservableCollection<Services.Student> classStuds = new ObservableCollection<Services.Student>();
 
@@ -179,13 +201,8 @@ namespace AcesWebApp.Controllers
                 classStuds.Add(tempStudent);
             }
 
-            //string className = _classroomRepository.GetClassroomById(model.classId).className;
-            //string orgName = _classroomRepository.GetClassroomById(model.classId).orgName;
 
-            string className = model.Classrooms.ElementAt(model.classId).className;
-            string orgName = model.Classrooms.ElementAt(model.classId).orgName;
-
-            return new Services.ClassRoom(className, orgName, classStuds);
+            return new Services.ClassRoom(orgName, className, classStuds);
 
         }
 

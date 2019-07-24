@@ -37,5 +37,10 @@ namespace AcesWebApp.Models.Classrooms
             _appDbContext.Classrooms.Remove(classroom);
             _appDbContext.SaveChanges();
         }
+
+        public int GetIdByName(string name)
+        {
+            return _appDbContext.Classrooms.FirstOrDefault(c => c.className == name).classId;
+        }
     }
 }

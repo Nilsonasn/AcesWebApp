@@ -11,5 +11,6 @@ namespace AcesWebApp.Models.Classrooms
         Classroom GetClassroomById(int classId);
         void AddClassroom(Classroom classroom);
         void RemoveClassroomById(int classId);
+        int GetIdByName(string name);
     }
 }
