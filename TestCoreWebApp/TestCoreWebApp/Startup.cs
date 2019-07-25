@@ -39,7 +39,7 @@ namespace TestCoreWebApp
             });
 
             services.AddDbContext<AppDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlite("Data Source = AcesDatabase.db"));
             services.AddScoped(typeof(AssignmentService));
             services.AddTransient<IClassroomRepository, ClassroomRepository>();
             services.AddTransient<IStudentRepository, StudentRepository>();
