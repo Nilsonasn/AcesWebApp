@@ -113,6 +113,7 @@ namespace Services
                     CommitMessageDateTime = DateTime.ParseExact(splitmessage[0].Trim(), "ddd MMM dd HH:mm:ss yyyy", provider);
 
                     Compiler = splitmessage[1];
+                 
                 }
                 catch (Exception ex)
                 {

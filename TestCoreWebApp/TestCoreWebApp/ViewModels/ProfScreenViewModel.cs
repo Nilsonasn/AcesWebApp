@@ -1,16 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using AcesWebApp.Models.Classrooms;
+using AcesWebApp.Models.Students;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AcesWebApp.Models
+namespace AcesWebApp.ViewModels
 {
-
-    public class ProfScreenModel : PageModel
+    public class ProfScreenViewModel
     {
+        public string Title { get; set; }
+        public List<Classroom> Classrooms { get; set; }
+        public List<Student> Students { get; set; }
+
+        public Classroom classroom { get; set; }
+
         public List<Services.ClassRoom> classList { get; set; }
         public string className { get; set; }
 
@@ -19,6 +26,9 @@ namespace AcesWebApp.Models
         public string studentRepoLocation { get; set; }
         public string securityKey { get; set; }
         public IFormFile professorUnitTest { get; set; }
+        public int classId { get; set; }
+
+        public string ClassDelete { get; set; }
 
         public string createClassName { get; set; }
         public string createOrgName { get; set; }
@@ -28,7 +38,7 @@ namespace AcesWebApp.Models
         public List<Assignment> assignments { get; set; }
         public Assignment assignment { get; set; }
 
-        public ProfScreenModel()
+        public ProfScreenViewModel()
         {
             classList = new List<Services.ClassRoom>();
         }

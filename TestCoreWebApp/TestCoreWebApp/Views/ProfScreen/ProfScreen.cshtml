@@ -1,9 +1,5 @@
 ﻿
-@model AcesWebApp.Models.ProfScreenModel
-
-@{
-    Layout = null;
-}
+@model AcesWebApp.ViewModels.ProfScreenViewModel
 
 @{
     var content = Model;
@@ -22,19 +18,19 @@
     <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="Assignments" method="post" class="mt-3">
         <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
             <!--<form asp-controller="ProfSceenController" asp-action="GetClassList">-->
-            <select style="width:100%" asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
+            <select asp-for="classId" style="width: 100%;">
+                @foreach (AcesWebApp.Models.Classrooms.Classroom classroom in content.Classrooms)
+                {
+                <option value="@classroom.classId">@classroom.className</option>
+                }
+            </select>
             <!--</form>-->
 
 
             @Html.TextBoxFor(model => model.assignmentName, new { style = "width:100%", @placeholder = "Assignment Name" })
             <br>
-            @Html.TextBoxFor(model => model.unitTestFileLocation, new { style = "width:100%", @placeholder = "Unit Test File" })
-            <br>
-            @Html.TextBoxFor(model => model.studentRepoLocation, new { style = "width:100%", @placeholder = "Student Repo Location" })
-            <br>
             @Html.TextBoxFor(model => model.securityKey, new { style = "width:100%", @placeholder = "Security Key" })
             <br>
-            <!--<input type="file" name="files" />-->
             <div class="form-group row">
                 <label asp-for="professorUnitTest" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
@@ -44,13 +40,12 @@
                     </div>
                 </div>
             </div>
-            <a href="" style="margin-right:15%">Delete Class</a> <a href="" style="margin-right:20%">Create Class</a> <a href="" style="margin-right:2%">Check</a>
             <button type="submit" class="btn btn-primary">Check</button>
 
-            
+
         </div>
 
-        
+
 
 
         @section Scripts {
@@ -64,6 +59,33 @@
             </script>
         }
     </form>
+
+    
+
+    <a class="btn btn-primary btn-lg active" asp-controller="ProfScreen" asp-action="CreateClass">Create a class</a>
+
+
+    <form asp-action="DeleteClass" method="post" class="form-horizontal" role="form">
+        <div class="col-md-8">
+            <div class="input-group">
+
+
+                <select asp-for="ClassDelete" class="form-control">
+                    >
+                    @foreach (AcesWebApp.Models.Classrooms.Classroom classroom in content.Classrooms)
+                    {
+                        <option value="@classroom.classId">@classroom.className</option>
+                    }
+                </select>
+                <div class="input-group-addon">
+                    <input type="submit" class="btn btn-primary" value="Delete Class" />
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+
 
 
 </body>
