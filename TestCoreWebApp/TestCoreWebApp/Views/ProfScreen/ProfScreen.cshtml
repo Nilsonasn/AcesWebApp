@@ -17,14 +17,12 @@
 
     <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="Assignments" method="post" class="mt-3">
         <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
-            <!--<form asp-controller="ProfSceenController" asp-action="GetClassList">-->
             <select asp-for="classId" style="width: 100%;">
                 @foreach (AcesWebApp.Models.Classrooms.Classroom classroom in content.Classrooms)
                 {
                 <option value="@classroom.classId">@classroom.className</option>
                 }
             </select>
-            <!--</form>-->
 
 
             @Html.TextBoxFor(model => model.assignmentName, new { style = "width:100%", @placeholder = "Assignment Name" })
@@ -85,8 +83,6 @@
 
         </div>
     </form>
-
-
 
 </body>
 </html>
