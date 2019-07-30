@@ -38,6 +38,9 @@ namespace AcesWebApp.ViewModels
         public List<Assignment> assignments { get; set; }
         public Assignment assignment { get; set; }
 
+        public string githubUser { get; set; }
+        public string githubPass { get; set; }
+
         public ProfScreenViewModel()
         {
             classList = new List<Services.ClassRoom>();

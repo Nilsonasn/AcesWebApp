@@ -178,7 +178,7 @@ namespace AcesWebApp.Controllers
             //if using the return button assignname is null
             if (model.assignmentName != null)
             {
-                myAssignmentService.assignService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+                myAssignmentService.assignService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo, model.githubUser, model.githubPass);
             }
 
             var assignments = myAssignmentService.assignService.GetAssignment();
