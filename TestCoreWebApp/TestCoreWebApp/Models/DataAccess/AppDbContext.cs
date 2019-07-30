@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AcesWebApp.Models.DataAccess
 {
-    public class AppDbContext:IdentityDbContext<IdentityUser>
+    public class AppDbContext:DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

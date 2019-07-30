@@ -1,9 +1,5 @@
 ﻿
-@model AcesWebApp.Models.ProfScreenModel
-
-@{
-    Layout = null;
-}
+@model AcesWebApp.ViewModels.ProfScreenViewModel
 
 @{
     var content = Model;
@@ -22,7 +18,12 @@
     <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="Assignments" method="post" class="mt-3">
         <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
             <!--<form asp-controller="ProfSceenController" asp-action="GetClassList">-->
-            <select style="width:100%" asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
+            <select asp-for="classId" style="width: 100%;">
+                @foreach (AcesWebApp.Models.Classrooms.Classroom classroom in content.Classrooms)
+                {
+                <option value="@classroom.classId">@classroom.className</option>
+                }
+            </select>
             <!--</form>-->
 
 
@@ -59,35 +60,28 @@
         }
     </form>
 
-    <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="" method="post" class="mt-3">
-        <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
+    
 
-            @Html.TextBoxFor(model => model.createClassName, new { style = "width:100%", @placeholder = "Class Name" })
-            <br>
-            @Html.TextBoxFor(model => model.createOrgName, new { style = "width:100%", @placeholder = "Organization Name" })
-            <br>
-            <div class="form-group row">
-                <label asp-for="roster" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <div class="custom-file">
-                        <input asp-for="roster" class="form-control custom-file-input" />
-                        <label class="custom-file-label">Choose Roster</label>
-                    </div>
+    <a class="btn btn-primary btn-lg active" asp-controller="ProfScreen" asp-action="CreateClass">Create a class</a>
+
+
+    <form asp-action="DeleteClass" method="post" class="form-horizontal" role="form">
+        <div class="col-md-8">
+            <div class="input-group">
+
+
+                <select asp-for="ClassDelete" class="form-control">
+                    >
+                    @foreach (AcesWebApp.Models.Classrooms.Classroom classroom in content.Classrooms)
+                    {
+                        <option value="@classroom.classId">@classroom.className</option>
+                    }
+                </select>
+                <div class="input-group-addon">
+                    <input type="submit" class="btn btn-primary" value="Delete Class" />
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Create Class</button>
-
-        </div>
-    </form>
-
-    <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="" method="post" class="mt-3">
-        <div class="container" style="width:30%;margin-top:2%;margin-left:auto;margin-right:auto">
-
-            <select style="width:100%" asp-for="className" asp-items="@(new SelectList(Model.classList, "Name", "Name"))"></select>
-            <br>
-
-            <button type="submit" class="btn btn-primary">Delete Class</button>
 
         </div>
     </form>
