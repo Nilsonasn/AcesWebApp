@@ -103,7 +103,7 @@ namespace AcesWebApp.Controllers
 
             //save restults of the program in the model
             model.StudentResults = Run(Path.Combine(hostingEnvironment.WebRootPath, "studentCode"));
-            //returns the student page and model for proper diaplay on same page
+            //returns the student page and model for proper display on same page
             return View("StudentPage", model);
         }
 
