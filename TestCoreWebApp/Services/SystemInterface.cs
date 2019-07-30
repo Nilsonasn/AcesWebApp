@@ -26,14 +26,11 @@ namespace Services
             try
             {
                 tempScore.NumberCorrect = 0;
-                tempScore.NumberIncorrect = 0;
-
-                //Compiler Location
-                String compLocation = Path.GetFullPath(@"..\G++\bin\");
+                tempScore.NumberIncorrect = 0;                
 
                 //A process is used to run commands on the command line
                 Process cmd = new Process();
-                cmd.StartInfo.FileName = "cmd.exe";
+                cmd.StartInfo.FileName = "/bin/bash";
                 cmd.StartInfo.UseShellExecute = false;
                 cmd.StartInfo.RedirectStandardOutput = true;
                 cmd.StartInfo.RedirectStandardInput = true;
@@ -41,43 +38,26 @@ namespace Services
                 cmd.Start();
 
                 //move to the directory
-                string directoryMove = "cd \"" + studentProjLocation + "\"";
+                string directoryMove = "cd /" + studentProjLocation + "/";
                 cmd.StandardInput.WriteLine(directoryMove);
 
                 //Delete the students unit test
-                string deleteCmd = "del /f UnitTests.cpp";
+                string deleteCmd = "rm UnitTests.cpp";
                 cmd.StandardInput.WriteLine(deleteCmd);
 
                 //Copy the instructors unit test
-                string moveCmd = "copy \"" + instructorUnitTests + "\" \"" + studentProjLocation + "\" /Y";
+                string moveCmd = "cp /" + instructorUnitTests + " /" + studentProjLocation + "/";
                 cmd.StandardInput.WriteLine(moveCmd);
-
-                //Move to compiler location
-                cmd.StandardInput.WriteLine("cd " + compLocation);
-
+                
                 //Build the project
                 //string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
-                string buildCmd = String.Format("g++ {0}*.cpp -o {1}test-assignmentInstructorUnitTest -lm", studentProjLocation + @"\", studentProjLocation + @"\");
-                cmd.StandardInput.WriteLine(buildCmd);
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}test-assignmentInstructorUnitTest ", studentProjLocation + @"/", studentProjLocation + @"/");
+                cmd.StandardInput.WriteLine(buildCmd);              
                 
-                //Waits for the compiler to compile the program before continuing
-                int timeOut = 0;
-                //while (!(File.Exists(String.Format(@"{0}\UnitTests_InstructorVersion.exe", studentProjLocation))))
-                while (!(File.Exists(String.Format(@"{0}\test-assignmentInstructorUnitTest.exe", studentProjLocation))))
-                {
-                    Thread.Sleep(1000);
-                    timeOut++;
-
-                    //timesout if 5 seconds have past
-                    if(timeOut == 5)
-                    {
-                        break;
-                    }
-                }
 
                 //Run the project
                 //string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
-                string runCmd = String.Format(@"{0}\test-assignmentInstructorUnitTest", studentProjLocation);
+                string runCmd = String.Format(@"{0}/test-assignmentInstructorUnitTest", studentProjLocation);
                 cmd.StandardInput.WriteLine(runCmd);
 
                 cmd.StandardInput.WriteLine("exit");

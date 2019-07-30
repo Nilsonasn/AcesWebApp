@@ -31,11 +31,11 @@ namespace Services
                     bool repoFound = true;
 
                     // set student repo location
-                    current.ProjectLocation = targetFolder + "\\" + current.Email;
+                    current.ProjectLocation = targetFolder + current.Email;
 
                     // start command process to run git
                     Process cmd = new Process();
-                    cmd.StartInfo.FileName = "cmd.exe";
+                    cmd.StartInfo.FileName = "/bin/bash";
                     cmd.StartInfo.UseShellExecute = false;
                     cmd.StartInfo.RedirectStandardOutput = true;
                     cmd.StartInfo.RedirectStandardError = true;
@@ -52,13 +52,13 @@ namespace Services
                     //   + assignmentName + "-" + current.GitHubUserName + ".git " + targetFolder + "\\" + current.Email;
 
                     string gitClone = "git clone https://" + userkey + "@github.com/" + nameOfOrganization + "/"
-                        + assignmentName + "-" + current.GitHubUserName + ".git " + "\"" + targetFolder + "\\" + current.Email + "\"";
+                        + assignmentName + "-" + current.GitHubUserName + ".git " + targetFolder + current.Email + "/";
 
                     //execute git clone command 
                     cmd.StandardInput.WriteLine(gitClone);
 
                     //have command window go to repo folder for student 
-                    cmd.StandardInput.WriteLine("cd " + targetFolder + "\\" + current.Email);
+                    cmd.StandardInput.WriteLine("cd /" + targetFolder + "/" + current.Email + "/");
 
                     //run get log command with flag to show changes 
                     cmd.StandardInput.WriteLine("git log --shortstat");

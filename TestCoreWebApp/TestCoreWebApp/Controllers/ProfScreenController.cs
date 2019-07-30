@@ -173,7 +173,7 @@ namespace AcesWebApp.Controllers
                 }
             }
 
-            string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
+            string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, @"studentRepo/");
 
             //if using the return button assignname is null
             if (model.assignmentName != null)
