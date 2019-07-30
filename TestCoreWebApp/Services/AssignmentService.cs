@@ -11,6 +11,9 @@ namespace Services
 
         private Analyzer Analyze = new Analyzer();
 
+        /// <summary>
+        /// This is just for testing use other constructor
+        /// </summary>
         public AssignmentService()
         {
              assignments = new List<Assignment>();
@@ -61,32 +64,19 @@ namespace Services
                     AvgTimeCommit = AvgTimeBetweenCommits,
                     StDevCommit = s.StdDev.ToString("0,0.00"),
                     ReasonsWhy = s.getReasonsWhy()
-                    //SourceCode = "stdout >> \"Hello World\";"
                 };
 
                 assignments.Add(assignment);
             }
             
-
         }
 
         public AssignmentService(ClassRoom classroom, string instructorUnitTestLocation, string assignName, string securityKey, string repoLocation)
         {
             assignments = new List<Assignment>();
 
-            String here = Directory.GetCurrentDirectory();
-
-            //roster Location
-            //String rosterLocation = classroom.RosterLocation;
-            //repo location
-            //String repoLocation = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
-            //instructor unit test UnitLocation
-            String instUnitLocation = Path.GetFullPath(@"..\Services\TestingResources\UnitTests_InstructorVersion.cpp");
-
+            //this is hardcoded and needs to be fixed
             UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
-
-
-            //ClassRoom classroom = new ClassRoom("weberstate4450summer2019", rosterLocation, "4450FinalClassroom");
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
 
@@ -120,7 +110,6 @@ namespace Services
                     AvgTimeCommit = AvgTimeBetweenCommits,
                     StDevCommit = s.StdDev.ToString("0,0.00"),
                     ReasonsWhy = s.getReasonsWhy()
-                    //SourceCode = "stdout >> \"Hello World\"; "
                 };
 
                 assignments.Add(assignment);

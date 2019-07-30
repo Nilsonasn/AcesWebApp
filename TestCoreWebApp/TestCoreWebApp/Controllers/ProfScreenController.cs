@@ -124,42 +124,9 @@ namespace AcesWebApp.Controllers
             
         }
 
-        private IActionResult GetClassList(ProfScreenModel vm)
-        {
-            //var vm = new ProfScreenModel();
-
-            // create a default path that is only used in the program. 
-            //string path = "classlist.csv";
-            string path = "C:\\Users\\User\\Desktop\\classlist.csv";
-
-                if (System.IO.File.Exists(path))
-                {
-                    // Create a file to write to.
-                    using (StreamReader sr = System.IO.File.OpenText(path))
-                    {
-                        string currentLine = "";
-                        while ((currentLine = sr.ReadLine()) != null && currentLine != "")
-                        {
-                            string[] items = currentLine.Split(',');
-                            vm.classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
-                        }
-
-                    }
-                }
-
-            if (vm.createClassName != null && vm.createOrgName != null)
-            {
-                vm.classList.Add(new Services.ClassRoom(vm.createOrgName, "C:\\Users\\User\\Desktop\\classroom_roster1.csv", vm.createClassName));
-                vm.createClassName = null;
-                vm.createOrgName = null;
-            }
-
-            return View(vm);
-        }
 
         private Services.ClassRoom GetClassroom(ProfScreenViewModel model)
         {
-            //_classroomRepository.AddClassroom(model.classroom);
             var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
             var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
             model = new ProfScreenViewModel()
@@ -168,23 +135,6 @@ namespace AcesWebApp.Controllers
                 Students = students.ToList()
 
             };
-
-            /*IEnumerable<Models.Students.Student> ClassStudents = _studentRepository.GetAllStudentsInClass(model.classId);
-            List<Models.Students.Student> studentList = ClassStudents.ToList();
-            ObservableCollection<Services.Student> classStuds = new ObservableCollection<Services.Student>();
-
-            foreach (Models.Students.Student s in studentList)
-            {
-                Services.Student tempStudent = new Services.Student(s.name, s.githubUrsName, s.githubEmail);
-                classStuds.Add(tempStudent);
-            }
-            */
-
-            //string className = _classroomRepository.GetClassroomById(model.classId).className;
-            //string orgName = _classroomRepository.GetClassroomById(model.classId).orgName;
-
-            //string className = model.Classrooms.ElementAt(model.classId).className;
-            //string orgName = model.Classrooms.ElementAt(model.classId).orgName;
 
             string className = model.Classrooms.ElementAt(model.classId).className;
             string orgName = model.Classrooms.ElementAt(model.classId).orgName;
@@ -223,75 +173,32 @@ namespace AcesWebApp.Controllers
                 }
             }
 
-            /*
-            List<Services.ClassRoom> classList = new List<Services.ClassRoom>();
-            string path = "C:\\Users\\User\\Desktop\\classlist.csv";
-
-            if (System.IO.File.Exists(path))
-            {
-                // Create a file to write to.
-                using (StreamReader sr = System.IO.File.OpenText(path))
-                {
-                    string currentLine = "";
-                    while ((currentLine = sr.ReadLine()) != null && currentLine != "")
-                    {
-                        string[] items = currentLine.Split(',');
-                        classList.Add(new Services.ClassRoom(items[0], items[1], items[2]));
-                    }
-
-                }
-            }
-
-
-            foreach (Services.ClassRoom c in classList)
-            {
-                if (c.Name == model.className)
-                {
-                    classR = c;
-                }
-            }
-            */
-
             string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, "studentRepo");
 
-            //To do: create new assignment service odjecct passing in correct info
-            //AssignmentService _assignmentService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+            //if using the return button assignname is null
+            if (model.assignmentName != null)
+            {
+                myAssignmentService.assignService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
+            }
 
-            myAssignmentService.assignService = new AssignmentService(classR, instructorUTPath, model.assignmentName, model.securityKey, studentRepo);
             var assignments = myAssignmentService.assignService.GetAssignment();
 
-            //AssignmentService _assignmentService = new AssignmentService();
-
-            //var assignments = _assignmentService.GetAssignment();
-            //model.assignments = _assignmentService.GetAssignment();
-            /*
-            List<Assignment> assignments = _assignmentService.GetAssignment();
-            TempData["assignments"] = _assignmentService.GetAssignment();
-            var assign = _assignmentService.GetAssignment();
-            */
 
             //HttpContext.Session["assignments"] = _assignmentService.GetAssignment();
             //_contextAccessor.HttpContext.Session.SetString
 
-
             //Session["assignments"] = _assignmentService.GetAssignment();
-            return View(assignments);
 
-            //return View();
+            return View(assignments);
         }
 
-        public IActionResult StudentDetails(ProfScreenModel model/*, AssignmentService _assignmentService*/)
+        public IActionResult StudentDetails(ProfScreenModel model)
         {
-            //var assignments = TempData["assignments"];
-            //List<Assignment> assignment = (List<Assignment>)assignments;
             List<Assignment> assignment = myAssignmentService.assignService.GetAssignment();
             var assign = assignment.ElementAt(model.assingnmentID);
 
             return View(assign);
         }
-
-        
-
 
     }
 
