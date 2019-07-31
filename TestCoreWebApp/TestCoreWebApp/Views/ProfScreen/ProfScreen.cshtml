@@ -10,11 +10,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>ProfScreen</title>
-    @*<link rel="stylesheet" href="~/css/tablestyles.css">*@
+
 </head>
 <body>
     <h1>Prof Screen</h1>
-
+    @if (content.errorText != null)
+    {
+    <p class="error">@content.errorText</p>
+    }
     <form enctype="multipart/form-data" asp-controller="ProfScreen" asp-action="Assignments" method="post" class="form-horizontal">
         <div>
             <div class="col-md-8">

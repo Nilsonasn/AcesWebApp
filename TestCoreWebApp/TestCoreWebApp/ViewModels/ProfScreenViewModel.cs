@@ -15,7 +15,7 @@ namespace AcesWebApp.ViewModels
         public string Title { get; set; }
         public List<Classroom> Classrooms { get; set; }
         public List<Student> Students { get; set; }
-
+        public string errorText { get; set; }
         public Classroom classroom { get; set; }
 
         public List<Services.ClassRoom> classList { get; set; }

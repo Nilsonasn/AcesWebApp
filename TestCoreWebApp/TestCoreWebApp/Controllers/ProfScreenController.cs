@@ -162,7 +162,25 @@ namespace AcesWebApp.Controllers
 
             string instructorUTPath = "";
             Services.ClassRoom classR = GetClassroom(model);
-
+            bool login;
+            if (model.githubPass == null || model.githubUser == null)
+            {
+                login = false;
+            }
+            else
+            {
+                login = TestGithubLogin.TestLogin(model.githubUser, model.githubPass).Result;
+            }
+            if (login==false)
+            {
+                var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
+                var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
+                model.Classrooms = classes.ToList();
+                model.Students = students.ToList();
+                model.errorText = "ERROR: invalid login";
+                return View("ProfScreen",model);
+            }
+            
             if (ModelState.IsValid)
             {
                 if(model.professorUnitTest != null)
@@ -215,5 +233,6 @@ namespace AcesWebApp.Controllers
 
             return result;
         }
-    } 
+    }
+    
 }
