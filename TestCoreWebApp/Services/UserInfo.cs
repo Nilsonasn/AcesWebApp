@@ -53,4 +53,22 @@ namespace Services
             }
         }
     }
+    public static class TestGithubLogin
+    {
+        static async public Task<bool> TestLogin(string UserName, string Password)
+        {
+            GitHubClient client = new GitHubClient(new ProductHeaderValue("ACES"));
+
+            client.Credentials = new Credentials(UserName, Password);
+            try
+            {
+                User userToGet = await client.User.Get(UserName);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+    }
 }

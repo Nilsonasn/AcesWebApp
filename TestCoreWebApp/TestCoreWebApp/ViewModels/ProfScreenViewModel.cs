@@ -15,7 +15,7 @@ namespace AcesWebApp.ViewModels
         public string Title { get; set; }
         public List<Classroom> Classrooms { get; set; }
         public List<Student> Students { get; set; }
-
+        public string errorText { get; set; }
         public Classroom classroom { get; set; }
 
         public List<Services.ClassRoom> classList { get; set; }
@@ -37,6 +37,9 @@ namespace AcesWebApp.ViewModels
         public int assingnmentID { get; set; }
         public List<Assignment> assignments { get; set; }
         public Assignment assignment { get; set; }
+
+        public string githubUser { get; set; }
+        public string githubPass { get; set; }
 
         public ProfScreenViewModel()
         {

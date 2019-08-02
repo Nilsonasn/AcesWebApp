@@ -71,12 +71,12 @@ namespace Services
             
         }
 
-        public AssignmentService(ClassRoom classroom, string instructorUnitTestLocation, string assignName, string securityKey, string repoLocation)
+        public AssignmentService(ClassRoom classroom, string instructorUnitTestLocation, string assignName, string securityKey, string repoLocation , string githubUsername, string githubPassword)
         {
             assignments = new List<Assignment>();
 
-            //this is hardcoded and needs to be fixed
-            UserInfo currentUser = new UserInfo("CS4450-Final-Group-Summer2019", "PassW0rd4450");
+            //Inputted username and login (hopefully)
+            UserInfo currentUser = new UserInfo(githubUsername, githubPassword);
 
             string useKey = currentUser.UserName + ":" + currentUser.Password;
 
