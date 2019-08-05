@@ -102,7 +102,9 @@ namespace AcesWebApp.Controllers
             }            
 
             //save restults of the program in the model
-            model.StudentResults = Run(Path.Combine(hostingEnvironment.WebRootPath, "studentCode"));
+            model.StudentResults = Run(Path.Combine(hostingEnvironment.WebRootPath, "studentCode"));          
+
+
             //returns the student page and model for proper display on same page
             return View("StudentPage", model);
         }
@@ -137,6 +139,10 @@ namespace AcesWebApp.Controllers
             //Run the project
             string runCmd = String.Format(@"{0}/UnitTests_InstructorVersion", studentProjLocation);
             cmd.StandardInput.WriteLine(runCmd);
+
+            //Delete the student's code
+            string deleteCmd = "rm -rf " + studentProjLocation + @"/";
+            cmd.StandardInput.WriteLine(deleteCmd);
 
             cmd.StandardInput.WriteLine("exit");           
 

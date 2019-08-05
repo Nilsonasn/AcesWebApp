@@ -185,11 +185,17 @@ namespace AcesWebApp.Controllers
             {
                 if(model.professorUnitTest != null)
                 {
+                    //creates the needed directory if it doesn't exist
+                    System.IO.Directory.CreateDirectory(_hostingEnvironment.WebRootPath + @"/" + "instructorUnitTest");
+
                     string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "instructorUnitTest");
                     instructorUTPath = Path.Combine(uploadFolder, model.assignmentName + "InstructorUnitTest.cpp");
                     model.professorUnitTest.CopyTo(new FileStream(instructorUTPath, FileMode.Create));
                 }
             }
+            
+            //creates the needed directory if it doesn't exist
+            System.IO.Directory.CreateDirectory(_hostingEnvironment.WebRootPath + @"/" + "studentRepo");
 
             string studentRepo = Path.Combine(_hostingEnvironment.WebRootPath, @"studentRepo/");
 
@@ -200,7 +206,11 @@ namespace AcesWebApp.Controllers
             }
 
             var assignments = myAssignmentService.assignService.GetAssignment();
-
+            
+            //deleted the uploaded instructor unit test after the program is done
+            if(!String.IsNullOrWhiteSpace(instructorUTPath)){
+                System.IO.File.Delete(instructorUTPath);
+            }            
 
             //HttpContext.Session["assignments"] = _assignmentService.GetAssignment();
             //_contextAccessor.HttpContext.Session.SetString
