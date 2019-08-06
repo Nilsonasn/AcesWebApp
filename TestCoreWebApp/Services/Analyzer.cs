@@ -59,7 +59,7 @@ namespace Services
                 foreach (Student student in CurrentClass.Students)
                 {
                     //build each class and get a score
-                    student.StudentScore = CurrentSystem.BuildAssignment(student.ProjectLocation, unitTestLocation, gradingKey);
+                    student.StudentScore = CurrentSystem.BuildAssignment(student.ProjectLocation, unitTestLocation, gradingKey, assignmentName);
                     analyze(student);
                 }
 

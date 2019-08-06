@@ -21,8 +21,9 @@ namespace Services
         /// </summary>
         /// <param name="studentProjLocation">Folder location of the students project</param>
         /// <param name="instructorUnitTests">Directory location of the instructors unit tests</param>
-        public Score BuildAssignment(string studentProjLocation, string instructorUnitTests, string securityCode)
+        public Score BuildAssignment(string studentProjLocation, string instructorUnitTests, string securityCode, string assignName)
         {
+            string instructorTestName = assignName + "InstructorUnitTest";
             Score tempScore = new Score();
             try
             {
@@ -51,12 +52,12 @@ namespace Services
                 cmd.StandardInput.WriteLine(moveCmd);
                 
                 //Build the project                
-                string buildCmd = String.Format("g++ {0}*.cpp -o {1}test-assignmentInstructorUnitTest ", studentProjLocation + @"/", studentProjLocation + @"/");
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}" + instructorTestName, studentProjLocation + @"/", studentProjLocation + @"/");
                 cmd.StandardInput.WriteLine(buildCmd);              
                 
 
                 //Run the project                
-                string runCmd = String.Format(@"{0}/test-assignmentInstructorUnitTest", studentProjLocation);
+                string runCmd = String.Format(@"{0}/" + instructorTestName, studentProjLocation);
                 cmd.StandardInput.WriteLine(runCmd);
 
                 //Delete the student's repo
