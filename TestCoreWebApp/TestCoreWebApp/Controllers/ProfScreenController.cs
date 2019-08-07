@@ -171,7 +171,7 @@ namespace AcesWebApp.Controllers
             {
                 login = TestGithubLogin.TestLogin(model.githubUser, model.githubPass).Result;
             }
-            if (login==false)
+            if (login==false && model.returnFromDetails == false)
             {
                 var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
                 var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
