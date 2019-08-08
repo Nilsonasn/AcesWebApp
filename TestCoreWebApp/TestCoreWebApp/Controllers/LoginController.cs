@@ -19,7 +19,7 @@ namespace AcesWebApp.Controllers
             _classRepository = classRepository;
         }
 
-        [Route("")]
+        
         public IActionResult Login()
         {
             var classes = _classRepository.GetAllClassrooms().OrderBy(c => c.className);

@@ -24,8 +24,8 @@ namespace AcesWebApp.Controllers
         {
             this.hostingEnvironment = hostingEnvironment;
         }
-        
-        [Route("StudentPage")]
+
+        [Route("")]
         public IActionResult StudentPage(StudentPageModel model)
         {
             return View(model);
