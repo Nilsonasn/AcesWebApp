@@ -41,6 +41,8 @@ namespace AcesWebApp.ViewModels
         public string githubUser { get; set; }
         public string githubPass { get; set; }
 
+        public bool returnFromDetails { get; set;} = false;
+
         public ProfScreenViewModel()
         {
             classList = new List<Services.ClassRoom>();

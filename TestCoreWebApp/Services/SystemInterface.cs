@@ -21,8 +21,9 @@ namespace Services
         /// </summary>
         /// <param name="studentProjLocation">Folder location of the students project</param>
         /// <param name="instructorUnitTests">Directory location of the instructors unit tests</param>
-        public Score BuildAssignment(string studentProjLocation, string instructorUnitTests, string securityCode)
+        public Score BuildAssignment(string studentProjLocation, string instructorUnitTests, string securityCode, string assignName)
         {
+            string instructorTestName = assignName + "InstructorUnitTest";
             Score tempScore = new Score();
             try
             {
@@ -42,24 +43,26 @@ namespace Services
                 string directoryMove = "cd /" + studentProjLocation + "/";
                 cmd.StandardInput.WriteLine(directoryMove);
 
-                //Delete the students unit test
+                //Delete the student's unit test
                 string deleteCmd = "rm UnitTests.cpp";
                 cmd.StandardInput.WriteLine(deleteCmd);
 
-                //Copy the instructors unit test
+                //Copy the instructor's unit test
                 string moveCmd = "cp /" + instructorUnitTests + " /" + studentProjLocation + "/";
                 cmd.StandardInput.WriteLine(moveCmd);
                 
-                //Build the project
-                //string buildCmd = String.Format("g++ {0}*.cpp -o {1}UnitTests_InstructorVersion -lm", studentProjLocation + @"\", studentProjLocation + @"\");
-                string buildCmd = String.Format("g++ {0}*.cpp -o {1}test-assignmentInstructorUnitTest ", studentProjLocation + @"/", studentProjLocation + @"/");
+                //Build the project                
+                string buildCmd = String.Format("g++ {0}*.cpp -o {1}" + instructorTestName, studentProjLocation + @"/", studentProjLocation + @"/");
                 cmd.StandardInput.WriteLine(buildCmd);              
                 
 
-                //Run the project
-                //string runCmd = String.Format(@"{0}\UnitTests_InstructorVersion", studentProjLocation);
-                string runCmd = String.Format(@"{0}/test-assignmentInstructorUnitTest", studentProjLocation);
+                //Run the project                
+                string runCmd = String.Format(@"{0}/" + instructorTestName, studentProjLocation);
                 cmd.StandardInput.WriteLine(runCmd);
+
+                //Delete the student's repo
+                deleteCmd = "rm -rf " + studentProjLocation + @"/";
+                cmd.StandardInput.WriteLine(deleteCmd);
 
                 cmd.StandardInput.WriteLine("exit");
 
