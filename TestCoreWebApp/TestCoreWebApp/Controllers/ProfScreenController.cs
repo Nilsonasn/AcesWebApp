@@ -119,9 +119,18 @@ namespace AcesWebApp.Controllers
         [HttpPost]
         public IActionResult DeleteClass(ProfScreenViewModel profScreenViewModel)
         {
-            _classroomRepository.RemoveClassroomById(int.Parse(profScreenViewModel.ClassDelete));
-            return View();
             
+            _classroomRepository.RemoveClassroomById(int.Parse(profScreenViewModel.ClassDelete));
+            var classes = _classroomRepository.GetAllClassrooms().OrderBy(c => c.className);
+            var students = _studentRepository.GetAllStudents().OrderBy(s => s.classId);
+            profScreenViewModel = new ProfScreenViewModel()
+            {
+                Classrooms = classes.ToList(),
+                Students = students.ToList()
+
+            };
+            return View("ProfScreen", profScreenViewModel);
+
         }
 
 
