@@ -96,7 +96,7 @@
         <div class="form-group row">
             <label class="col-md-2 control-label"></label>
             <div class="input-group col-md-5">
-                <select asp-for="classId" class="form-control">
+                <select asp-for="ClassDelete" class="form-control">
                     @foreach (AcesWebApp.Models.Classrooms.Classroom classroom in content.Classrooms)
                     {
                         <option value="@classroom.classId">@classroom.className</option>
